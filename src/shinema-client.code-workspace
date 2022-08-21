@@ -1,9 +1,15 @@
 {
   "folders": [
 	{
+		"name": "shinema-client",
 		"path": ".."
 	},
 	{
+		"name": "shinema-server",
+		"path": "../../shinema-server"
+	},
+	{
+		"name": "Shinema-main",
 		"path": "../../../uit-code/Shinema-main"
 	}
 ],
