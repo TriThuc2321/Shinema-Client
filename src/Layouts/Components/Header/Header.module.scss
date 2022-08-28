@@ -1,74 +1,59 @@
-.wrapper {
-    position: absolute;
+.container {
+    display: flex;
     top: 0;
     left: 0;
-    z-index: 10;
-    display: flex;
-    width: 100%;
-    height: auto;
-    color: white;
-}
-
-.inner {
-    height: 100%;
-    width: 100%;
-    padding: 50px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.logo {
-    height: 40px;
-    width: 40px;
-    cursor: pointer;
-}
-
-.nav-text {
-    display: flex;
-    width: 30%;
-    justify-content: space-around;
-    transition: background-color 2s;
-
-
-}
-
-.item {
-    padding: 5px 13px;
-    position: relative;
-
-    &:hover {
-        .item-background {
-            width: 100%;
-        }
-    }
-}
-
-.item-background {
-    background-color: var(--primary-color);
-    width: 0%;
-    height: 100%;
+    right: 0;
     position: absolute;
-    z-index: -1;
-    margin: -5px -13px;
-    transition: width 1s;
-}
+    z-index: 3;
+    padding: 45px 70px;
+    justify-content: space-between;
+    color: #fff;
 
-.menu {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
 
-    .list-menu {
-        margin-top: 5px;
+    .nav-text {
         display: flex;
-        font-size: 12px;
-        flex-direction: column;
-        height: 100px;
-        width: 90px;
-        padding: 10px 3px;
-        justify-content: space-between;
-        align-items: flex-end;
-        background-color: var(--primary-color);
+        justify-content: flex-end;
+        align-items: center;
+        flex-direction: row;
+    }
+
+    .nav-text p {
+        font-family: var(--font-family);
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 25px;
+        text-transform: capitalize;
+        margin: 0 1.5rem;
+        cursor: pointer;
+        transition: opacity 0.2 ease;
+    }
+
+    .nav-text img {
+        height: 35px;
+        width: 35px;
+    }
+
+    .nav-text p:hover {
+        opacity: 0.8;
+    }
+
+    .login {
+        display: flex;
+        align-items: center;
+    }
+
+    .login p {
+        font-family: var(--font-family);
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 25px;
+        text-transform: capitalize;
+        margin: 0 2rem;
+        cursor: pointer;
+        transition: opacity 0.2 ease;
+    }
+
+    .login p:hover {
+        opacity: 0.7;
     }
 }

@@ -122,13 +122,8 @@ export const subDate = (date1, date2) => {
 };
 
 export const availableSeat = (listBookedSeats, listRoomSeats, currentSeat) => {
-    if (listRoomSeats.contains(currentSeat)) {
-        if (listBookedSeats.contains(currentSeat)) {
-            return false;
-        }
-
-        return true;
-    }
+    // eslint-disable-next-line no-unused-expressions
+    !(listRoomSeats.contains(currentSeat) && listBookedSeats.contains(currentSeat));
 };
 
 export const removeDuplicates = (array) => Array.from(new Set(array));

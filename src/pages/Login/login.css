@@ -1,0 +1,205 @@
+.login {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.login__background {
+    position: relative;
+}
+
+.login__background__img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.login__color__gradient {
+    /* ff 3.6+ */
+    background: -moz-linear-gradient(66deg, rgba(4, 12, 24, 1) 57%, rgba(4, 12, 24, 0.52) 78%, rgba(255, 255, 255, 0) 100%);
+    /* safari 5.1+,chrome 10+ */
+    background: -webkit-linear-gradient(66deg, rgba(4, 12, 24, 1) 57%, rgba(4, 12, 24, 0.52) 78%, rgba(255, 255, 255, 0) 100%);
+    /* opera 11.10+ */
+    background: -o-linear-gradient(66deg, rgba(4, 12, 24, 1) 57%, rgba(4, 12, 24, 0.52) 78%, rgba(255, 255, 255, 0) 100%);
+    /* ie 6-9 */
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#FFFFFF', endColorstr='#040C18', GradientType=0);
+    /* ie 10+ */
+    background: -ms-linear-gradient(66deg, rgba(4, 12, 24, 1) 57%, rgba(4, 12, 24, 0.52) 78%, rgba(255, 255, 255, 0) 100%);
+    /* global 94%+ browsers support */
+    background: linear-gradient(66deg, rgba(4, 12, 24, 1) 57%, rgba(4, 12, 24, 0.52) 78%, rgba(255, 255, 255, 0) 100%);
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+
+.login__form__container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    top: 60px;
+    left: 70px;
+    bottom: 60px;
+    right: 70px;
+    max-width: 490px;
+    font-family: var(--font-family);
+    
+}
+
+.login__form__container h2 {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.login__form__ip__container {
+    padding-right: 20px;
+    margin: 10px 0px;
+    border-radius: 10px;
+    outline: none;
+    border-width: 0;
+    background-color: rgb(9, 24, 48);
+    display: flex;
+    align-items: center;
+}
+
+.login__form__title {
+    display: flex;
+    align-items: flex-end;
+}
+
+.login__form__title img {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.login__form__ip {
+    padding: 20px 25px;
+    flex: 1;
+    outline: none;
+    border-width: 0;
+    color: #fff;
+    background-color: transparent
+}
+
+.login__form__message {
+    display: flex;
+    background-color: transparent;
+    font-size: 12px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.login__form__message p {
+    margin-left: 5px;
+}
+
+.login__form__remember__container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    margin-top: 10px;
+}
+
+.login__form__remember__container a {
+    font-style: italic;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.login__form__remember__container a:hover {
+    opacity: 0.7;
+}
+
+.login__form__remember {
+    display: flex;
+    align-self: flex-end;
+}
+
+.login__form__remember p {
+    margin-right: 10px;
+    transition: opacity 0.2 ease;
+}
+
+.login__form__remember input {
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.login__form__btn {
+    padding: 0.5rem 2rem;
+    color: #fff;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 25px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    min-width: 180px;
+    transition: opacity 0.2 ease;
+}
+
+.login__form__btn:hover {
+    opacity: 0.7;
+}
+
+.login__form__btn--login {
+    background: #FF4820;
+    border-radius: 20px;
+    margin: 30px 0px;
+}
+
+.login__form__socialMedia {
+    display: flex;
+    border: 1px solid #fff;
+    border-radius: 20px;
+    margin: 10px 0;
+    padding: 10px 20px;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: opacity 0.2 ease;
+}
+
+.login__form__socialMedia:hover {
+    opacity: 0.7;
+}
+
+.login__form__socialMedia p {
+    margin-left: 10px;
+}
+
+.login__form__register {
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.login__form__register a {
+    color: #FF4820;
+    font-weight: bold;
+    margin-left: 5px;
+    cursor: pointer;
+    transition: opacity 0.2 ease;
+}
+
+.login__form__register a:hover {
+    opacity: 0.7;
+}
+
+@media screen and (max-width: 620px) {}
+
+@media screen and (max-width: 460px) {
+    .login__form__container {
+        left: 25px;
+        right: 25px;
+    }
+}

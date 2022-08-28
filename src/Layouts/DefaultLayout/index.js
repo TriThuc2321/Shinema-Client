@@ -1,12 +1,12 @@
-import Sidebar from '../Components/Sidebar';
+import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 
 function DefaultLayout({ children }) {
     return (
         <div>
             <Header />
-            <Sidebar />
             <div>{children}</div>
+            <Footer />
         </div>
     );
 }

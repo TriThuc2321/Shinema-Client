@@ -1,6 +1,6 @@
-import { DetailPageLayout } from '~/Layouts';
-import { Home, Login } from '../Pages';
-import config from '~/Configs';
+import { DetailPageLayout } from '~/layouts';
+import { Home, Login } from '../pages';
+import config from '~/configs';
 
 const publicRoutes = [
     { path: config.routes.home, component: Home },

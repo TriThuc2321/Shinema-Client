@@ -1,68 +1,71 @@
-import React, { useState } from 'react';
-import { HiMenuAlt3 } from 'react-icons/hi';
+import React from 'react';
 import classNames from 'classnames/bind';
+
+import { Link, useNavigate } from 'react-router-dom';
+import Button from '@mui/material/Button';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { red } from '@mui/material/colors';
 import styles from './Header.module.scss';
+
+import logoPng from '~/assets/logo_png.png';
 
 const cx = classNames.bind(styles);
 
 function Header() {
     return (
-        <header className={cx('wrapper')}>
-            <div className={cx('inner')}>
-                <NavText />
-                <Menu />
-            </div>
-        </header>
+        <div className={cx('container')}>
+            <NavbarLink />
+            <NotSignInMenu />
+        </div>
     );
 }
-
-function NavText() {
+function NavbarLink() {
     return (
         <div className={cx('nav-text')}>
-            <div className={cx('item')}>
-                <div className={cx('item-background')} />
-                <a href="#top">Home</a>
-            </div>
-
-            <div className={cx('item')}>
-                <div className={cx('item-background')} />
-                <a href="#about">About</a>
-            </div>
-
-            <div className={cx('item')}>
-                <div className={cx('item-background')} />
-                <a href="#project">Project</a>
-            </div>
+            <img src={logoPng} alt="logo_png" />
+            <p>
+                <a href="#popular">Popular</a>
+            </p>
+            <p>
+                <a href="#upcoming">Upcoming</a>
+            </p>
+            <p>
+                <a href="#top_rated">Top-rated</a>
+            </p>
         </div>
     );
 }
 
-function Menu() {
-    const [toggleMenu, setToggleMenu] = useState(false);
-    const handleClose = () => {
-        setToggleMenu(false);
-    };
+function NotSignInMenu() {
+    const btnTheme = createTheme({
+        shape: {
+            borderRadius: 20,
+        },
+        palette: {
+            primary: red,
+        },
+    });
+
+    const navigate = useNavigate();
 
     return (
-        <div className={cx('menu')}>
-            <HiMenuAlt3 size="1.5em" onClick={() => setToggleMenu(!toggleMenu)} onBlur={() => console.log('blur')} />
-            {toggleMenu && <ListMenu handleClose={handleClose} />}
-        </div>
-    );
-}
+        <div className={cx('login')}>
+            <p>
+                <Link to="/login">LOGIN</Link>
+            </p>
 
-function ListMenu({ handleClose }) {
-    return (
-        <div className={cx('list-menu')}>
-            <a href="#top" onClick={handleClose}>
-                Home
-            </a>
-            <a href="#about" onClick={handleClose}>
-                About
-            </a>
-            <a href="#project" onClick={handleClose}>
-                Project
-            </a>
+            <ThemeProvider theme={btnTheme}>
+                <Button
+                    sx={{
+                        paddingX: 5,
+                        paddingY: 0.8,
+                    }}
+                    variant="contained"
+                    onClick={() => navigate('/register')}
+                >
+                    REGISTER
+                </Button>
+            </ThemeProvider>
         </div>
     );
 }

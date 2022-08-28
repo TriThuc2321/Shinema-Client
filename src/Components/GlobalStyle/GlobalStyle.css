@@ -13,6 +13,13 @@
     --background-gradient: : linear-gradient(#040C18, #071830, #0C264E);
 }
 
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Manrope', sans-serif;
 }

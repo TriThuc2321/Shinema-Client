@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { URL_SERVER } from '../Constants';
+import { URL_SERVER } from '../constants';
 import ApiAuthen from './ApiAuthen';
 
 const ApiDatabase = axios.create({
