@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/jsx-equals-spacing */
 import React, { useState, useEffect } from 'react';
 import './style.css';
 
@@ -105,7 +107,7 @@ function FilmDetails() {
                             <div className="movie-content__info">
                                 <div className="movie-content__info__title">{film.name || film.title}</div>
                                 <div className="movie-content__info__duration">
-                                    {film.runtime} minutes
+                                    {`${film.runtime} minutes`}
                                 </div>
                                 <div className="movie-content__info__genres">
                                     {

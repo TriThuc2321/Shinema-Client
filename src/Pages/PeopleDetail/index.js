@@ -11,7 +11,7 @@ function PeopleDetails() {
     const [movies, setMovies] = useState([]);
 
     useEffect(() => {
-        const getPerson = async () => {
+        const getPerson = async() => {
             try {
                 const response = await tmdbApi.getDetailPerson(id);
                 setPerson(response);
@@ -22,10 +22,10 @@ function PeopleDetails() {
 
         getPerson();
 
-        const getMovie = async () => {
+        const getMovie = async() => {
             try {
                 const response = await tmdbApi.getMovieCredits(id);
-                setMovies(response.cast.filter((item) => (item.backdrop_path !== null || item.poster_path !== null)));
+                setMovies(response.cast.filter((item) => item.backdrop_path !== null || item.poster_path !== null));
             } catch (err) {
                 console.log(err);
             }
@@ -33,14 +33,10 @@ function PeopleDetails() {
         getMovie();
     }, [id]);
 
+    return <div className = "details" > {
+        person && < Person person = { person }
+        movies = { movies }
+        />}</div > ;
+    }
 
-    return (
-        <div className="details">
-            {
-                person && <Person person = { person } movies = {movies}/>
-            }
-        </div>
-    );
-}
-
-export default PeopleDetails;
+    export default PeopleDetails;
