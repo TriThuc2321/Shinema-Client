@@ -299,7 +299,7 @@ function Profile() {
             });
 
             check = false;
-        } else (setNameNote({ ...nameNote, visible: false }));
+        } else setNameNote({ ...nameNote, visible: false });
 
         if (values.contact === '' || values.contact === undefined) {
             setContactNote({
@@ -317,7 +317,7 @@ function Profile() {
                 visible: true,
             });
             check = false;
-        } else (setContactNote({ ...contactNote, visible: false }));
+        } else setContactNote({ ...contactNote, visible: false });
 
         if (values.identifyNumber === '' || values.identifyNumber === undefined) {
             setIDNote({
@@ -327,7 +327,9 @@ function Profile() {
                 visible: true,
             });
             check = false;
-        } else { setIDNote({ ...IDNote, visible: false }); }
+        } else {
+            setIDNote({ ...IDNote, visible: false });
+        }
 
         if (values.address === '' || values.address === undefined) {
             setAddressNote({
@@ -337,7 +339,9 @@ function Profile() {
                 visible: true,
             });
             check = false;
-        } else { setAddressNote({ ...addressNote, visible: false }); }
+        } else {
+            setAddressNote({ ...addressNote, visible: false });
+        }
 
         if (values.birthday === '' || values.birthday === undefined) {
             setBirthdayNote({
@@ -347,7 +351,9 @@ function Profile() {
                 visible: true,
             });
             check = false;
-        } else { setBirthdayNote({ ...birthdayNote, visible: false }); }
+        } else {
+            setBirthdayNote({ ...birthdayNote, visible: false });
+        }
 
         // else if ()
         // {
@@ -414,12 +420,14 @@ function Profile() {
                 reader.onloadend = async () => {
                     listFile.push(reader.result);
                     if (i === e.target.files.length - 1) {
-                        await cloudinaryApi.upload(listFile)
+                        await cloudinaryApi
+                            .upload(listFile)
                             .then((res) => {
                                 console.log(res);
                                 setIsLoading(false);
                                 setValues({ ...values, avatar: res.data[0] });
-                            }).catch((err) => {
+                            })
+                            .catch((err) => {
                                 console.log(err);
                                 // setErrorNotification({
                                 //     status: true,
@@ -435,9 +443,11 @@ function Profile() {
     return (
         <div
             className="profile__container"
-            style={{
-                /// backgroundImage: `url(${background_login})`
-            }}
+            style={
+                {
+                    /// backgroundImage: `url(${background_login})`
+                }
+            }
         >
             <Helmet>
                 <title>Profile</title>
@@ -470,7 +480,11 @@ function Profile() {
                                     onChange={handleChangeInformation('name')}
                                 />
                             </ThemeProvider>
-                            { nameNote.visible && <div className="profile-information__item__note"><Message message={nameNote.message} type={nameNote.type} /></div>}
+                            {nameNote.visible && (
+                                <div className="profile-information__item__note">
+                                    <Message message={nameNote.message} type={nameNote.type} />
+                                </div>
+                            )}
                         </div>
 
                         <div className="profile-information__item">
@@ -490,7 +504,11 @@ function Profile() {
                                 />
                             </ThemeProvider>
 
-                            {contactNote.visible && <div className="profile-information__item__note"><Message message={contactNote.message} type={contactNote.type} /></div>}
+                            {contactNote.visible && (
+                                <div className="profile-information__item__note">
+                                    <Message message={contactNote.message} type={contactNote.type} />
+                                </div>
+                            )}
                         </div>
 
                         <div className="profile-information__item">
@@ -509,7 +527,11 @@ function Profile() {
                                     onChange={handleChangeInformation('identifyNumber')}
                                 />
                             </ThemeProvider>
-                            {IDNote.visible && <div className="profile-information__item__note"><Message type={IDNote.type} message={IDNote.message} /></div>}
+                            {IDNote.visible && (
+                                <div className="profile-information__item__note">
+                                    <Message type={IDNote.type} message={IDNote.message} />
+                                </div>
+                            )}
                         </div>
 
                         <div className="profile-information__item">
@@ -528,7 +550,11 @@ function Profile() {
                                     onChange={handleChangeInformation('address')}
                                 />
                             </ThemeProvider>
-                            {addressNote.visible && <div className="profile-information__item__note"><Message message={addressNote.message} type={addressNote.type} /></div>}
+                            {addressNote.visible && (
+                                <div className="profile-information__item__note">
+                                    <Message message={addressNote.message} type={addressNote.type} />
+                                </div>
+                            )}
                         </div>
 
                         <div className="profile-information__item">
@@ -558,7 +584,11 @@ function Profile() {
                                 />
                             </ThemeProvider>
 
-                            {birthdayNote.visible && <div className="profile-information__item__note"><Message type={birthdayNote.type} message={birthdayNote.message} /></div>}
+                            {birthdayNote.visible && (
+                                <div className="profile-information__item__note">
+                                    <Message type={birthdayNote.type} message={birthdayNote.message} />
+                                </div>
+                            )}
                         </div>
                         <div className="profile-information__item">
                             <div className="profile-information__item__title">Email</div>
@@ -586,9 +616,7 @@ function Profile() {
                             <ThemeProvider theme={TextFieldTheme}>
                                 <Switch
                                     onChange={handleChangeInformation('gender')}
-                                    defaultChecked={
-                                        currentUser.gender === 'male'
-                                    }
+                                    defaultChecked={currentUser.gender === 'male'}
                                 />
                             </ThemeProvider>
                         </div>
@@ -604,7 +632,7 @@ function Profile() {
                                     }}
                                     onClick={editProfile}
                                 >
-SAVE CHANGES
+                                    SAVE CHANGES
                                 </Button>
                             </ThemeProvider>
                         </Box>
@@ -633,7 +661,11 @@ SAVE CHANGES
                                 onChange={handleChangePasswords('old')}
                             />
                         </ThemeProvider>
-                        {oldPasswordNote.visible && <div className="password-information__item__note"><Message type={oldPasswordNote.type} message={oldPasswordNote.message} /></div>}
+                        {oldPasswordNote.visible && (
+                            <div className="password-information__item__note">
+                                <Message type={oldPasswordNote.type} message={oldPasswordNote.message} />
+                            </div>
+                        )}
                     </div>
 
                     <div className="password-information__item">
@@ -653,7 +685,11 @@ SAVE CHANGES
                                 onChange={handleChangePasswords('new')}
                             />
                         </ThemeProvider>
-                        {newPasswordNote.visible && <div className="password-information__item__note"><Message message={newPasswordNote.message} type={newPasswordNote.type} /></div>}
+                        {newPasswordNote.visible && (
+                            <div className="password-information__item__note">
+                                <Message message={newPasswordNote.message} type={newPasswordNote.type} />
+                            </div>
+                        )}
                     </div>
 
                     <div className="password-information__item">
@@ -673,7 +709,11 @@ SAVE CHANGES
                                 onChange={handleChangePasswords('repeatNew')}
                             />
                         </ThemeProvider>
-                        {repeatNewPasswordNote.visible && <div className="password-information__item__note"><Message type={repeatNewPasswordNote.type} message={repeatNewPasswordNote.message} /></div>}
+                        {repeatNewPasswordNote.visible && (
+                            <div className="password-information__item__note">
+                                <Message type={repeatNewPasswordNote.type} message={repeatNewPasswordNote.message} />
+                            </div>
+                        )}
                     </div>
 
                     <Box textAlign="center">
@@ -687,7 +727,7 @@ SAVE CHANGES
                                 }}
                                 onClick={changePassword}
                             >
-                          CHANGE PASSWORD
+                                CHANGE PASSWORD
                             </Button>
                         </ThemeProvider>
                     </Box>
@@ -695,17 +735,15 @@ SAVE CHANGES
             </div>
 
             <div className="profile-pic">
-                {currentUser.avatar === ''
-                    ? <img
+                {currentUser.avatar === '' ? (
+                    <img
                         className="profile-pic__img"
                         src="https://minervastrategies.com/wp-content/uploads/2016/03/default-avatar.jpg"
                         alt="logo"
                     />
-                    : <img
-                        alt="Your avatar"
-                        className="profile-pic__img"
-                        src={currentUser.avatar}
-                    />}
+                ) : (
+                    <img alt="Your avatar" className="profile-pic__img" src={currentUser.avatar} />
+                )}
                 <Box textAlign="center">
                     <ThemeProvider theme={ButtonTheme}>
                         {/* <Button variant="contained" className='profile-pic__btnChange'
@@ -714,7 +752,13 @@ SAVE CHANGES
                   marginTop: 3
                 }}
               >CHANGE</Button> */}
-                        <input type="file" name="file" accept="image/png, image/jpeg" onChange={changePic} style={{ padding: 1, marginTop: 20, marginLeft: 100 }} />
+                        <input
+                            type="file"
+                            name="file"
+                            accept="image/png, image/jpeg"
+                            onChange={changePic}
+                            style={{ padding: 1, marginTop: 20, marginLeft: 100 }}
+                        />
                     </ThemeProvider>
                 </Box>
                 <div className="profile-pic__note">Acceptable formats .png and .jpg only</div>
@@ -723,8 +767,8 @@ SAVE CHANGES
             {isLoading && <Loading />}
             <Success message={updateSucceeded.message} status={updateSucceeded.status} />
         </div>
-    //  : <Loading />
-    //         }
+        //  : <Loading />
+        //         }
     );
 }
 

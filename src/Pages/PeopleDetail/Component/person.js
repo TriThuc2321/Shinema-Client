@@ -100,8 +100,8 @@ function Person(props) {
                                 ? (
                                     <div className="movies-list">
                                         {
-                                            movies.map((item, i) => (
-                                                <SlideItem item={item} key={i} />
+                                            movies.map((item) => (
+                                                <SlideItem item={item} key={item._id} />
                                             ))
                                         }
                                     </div>

@@ -15,8 +15,8 @@ import { Helmet } from 'react-helmet';
 import { movieCornerSelector } from '../../redux/selector';
 import movieCornerSlice from '../../Redux/slices/movieCornerSlice';
 
-import CastCorner from '../../components/Corners/PeopleCorner/castCorner';
-import FilmCorner from '../../components/Corners/FilmCorner/filmCorner';
+import CastCorner from './Component/Cast/cast';
+import FilmCorner from './Component/Film/film';
 import MainNavBar from '../../components/MainNavBar/mainNavBar';
 
 function Corner() {
@@ -61,23 +61,23 @@ function Corner() {
                     <TabContext value={value}>
                         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                             <TabList onChange={handleChange} centered>
-                                {
-                                    movieState.chosenType !== undefined
-                                        ? <Tab
-                                            label="MOVIES"
-                                            value="0"
-                                            component={Link}
-                                            to={`/corner/movie/${movieState.chosenType}`}
-                                            sx={{ color: '#fff' }}
-                                        />
-                                        : <Tab
-                                            label="MOVIES"
-                                            value="0"
-                                            component={Link}
-                                            to="/corner/movie/popular"
-                                            sx={{ color: '#fff' }}
-                                        />
-                                }
+                                {movieState.chosenType !== undefined ? (
+                                    <Tab
+                                        label="MOVIES"
+                                        value="0"
+                                        component={Link}
+                                        to={`/corner/movie/${movieState.chosenType}`}
+                                        sx={{ color: '#fff' }}
+                                    />
+                                ) : (
+                                    <Tab
+                                        label="MOVIES"
+                                        value="0"
+                                        component={Link}
+                                        to="/corner/movie/popular"
+                                        sx={{ color: '#fff' }}
+                                    />
+                                )}
 
                                 <Tab
                                     label="PEOPLE"
@@ -100,7 +100,6 @@ function Corner() {
                 </Box>
             </ThemeProvider>
         </div>
-
     );
 }
 
