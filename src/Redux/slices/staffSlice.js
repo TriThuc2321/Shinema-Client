@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import accountApi from '../../api/accountApi';
+import accountApi from '../../Api/accountApi';
 
 export const getAllStaff = createAsyncThunk('staff/getAll', async (data, { rejectWithValue }) => {
     const response = await accountApi.getAllStaff();

@@ -13,17 +13,17 @@ import { red, grey } from '@mui/material/colors';
 import { encode } from 'base-64';
 
 import { Helmet } from 'react-helmet';
-import AccountApi from '../../api/accountApi';
+import AccountApi from '../../Api/accountApi';
 import mFunction from '../../function';
 
-import Loading from '../../components/Loading/loading';
-import Message from '../../components/Message/message';
-import { Success } from '../../components/Alert/alert';
+import Loading from '../../Components/Loading/loading';
+import Message from '../../Components/Message/message';
+import { Success } from '../../Components/Alert/alert';
 // import logo from '../../assets/logo.png';
 
-import cloudinaryApi from '../../api/cloudinaryAPI';
+import cloudinaryApi from '../../Api/cloudinaryAPI';
 
-import userSlice from '../../redux/slices/userSlice';
+import userSlice from '../../Redux/slices/userSlice';
 import userSelector from '../../Redux/slices/userSlice';
 
 function Profile() {
