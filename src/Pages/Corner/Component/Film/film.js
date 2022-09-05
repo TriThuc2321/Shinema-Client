@@ -197,7 +197,7 @@ export function ViewMoreButton(props) {
         <div className="film__container__content__viewMore">
             <ThemeProvider theme={btnTheme}>
                 <Button sx={{ paddingX: 5, paddingY: 0.8 }} variant="outlined" onClick={props.onClick}>
-                    Xem thêm
+                    View more
                 </Button>
             </ThemeProvider>
         </div>
