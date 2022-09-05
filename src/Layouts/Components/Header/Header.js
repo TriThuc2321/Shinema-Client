@@ -7,7 +7,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 import styles from './Header.module.scss';
 
-import logoPng from '~/assets/logo_png.png';
+import logoPng from '~/Assets/logo_png.png';
 
 const cx = classNames.bind(styles);
 
