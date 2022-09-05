@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import tmdbApi from '../../../../Api/tmdbApi';
-import apiConfig from '../../api/apiConfig';
+import tmdbApi from '~/Api/tmdbApi';
+import apiConfig from '~/Api/apiConfig';
 
 import './castList.css';
 // eslint-disable-next-line import/order

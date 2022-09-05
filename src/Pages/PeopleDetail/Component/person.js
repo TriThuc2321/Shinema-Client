@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import '../style.css';
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
@@ -11,13 +12,13 @@ import TabPanel from '@mui/lab/TabPanel';
 import { red } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-import apiConfig from '../../api/apiConfig';
-import MainNavBar from '../../components/MainNavBar/mainNavBar';
+import apiConfig from '~/Api/apiConfig';
 
 function Person(props) {
     const { person } = props;
     const [value, setValue] = React.useState(0);
-    const [movies, setMovies] = useState(props.movies);
+    const [movies] = React.useState([]);
+    //  const [movies, setMovies] = useState(props.movies);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -32,12 +33,9 @@ function Person(props) {
     return (
         <>
             <Helmet>
-                <title>
-                    {person.name}
-                </title>
+                <title>{person.name}</title>
             </Helmet>
 
-            <MainNavBar />
             <div className="person-detail">
                 <div
                     className="person-detail__avatar"
@@ -63,28 +61,16 @@ function Person(props) {
                         <div className="general-content">{person.place_of_birth}</div>
                     </div>
                 </div>
-
             </div>
 
             <ThemeProvider theme={tabTheme}>
-                <Box
-                    sx={{ width: '80%', typography: 'body1', marginLeft: '50px' }}
-                    className="box"
-                >
+                <Box sx={{ width: '80%', typography: 'body1', marginLeft: '50px' }} className="box">
                     <TabContext value={value}>
                         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                             <TabList onChange={handleChange} aria-label="lab API tabs example">
-                                <Tab
-                                    label="INTRODUCE"
-                                    value={0}
-                                    sx={{ color: '#fff', fontSize: '40' }}
-                                />
+                                <Tab label="INTRODUCE" value={0} sx={{ color: '#fff', fontSize: '40' }} />
 
-                                <Tab
-                                    label="MOVIES"
-                                    value={1}
-                                    sx={{ color: '#fff' }}
-                                />
+                                <Tab label="MOVIES" value={1} sx={{ color: '#fff' }} />
                             </TabList>
                         </Box>
 
@@ -96,19 +82,15 @@ function Person(props) {
                         </TabPanel>
 
                         <TabPanel value={1}>
-                            {movies.length !== 0
-                                ? (
-                                    <div className="movies-list">
-                                        {
-                                            movies.map((item) => (
-                                                <SlideItem item={item} key={item._id} />
-                                            ))
-                                        }
-                                    </div>
-                                )
-                                : (
-                                    <div className="movies-list__updating">Updating...</div>
-                                )}
+                            {movies.length !== 0 ? (
+                                <div className="movies-list">
+                                    {movies.map((item) => (
+                                        <SlideItem item={item} key={item._id} />
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className="movies-list__updating">Updating...</div>
+                            )}
                         </TabPanel>
                     </TabContext>
                 </Box>

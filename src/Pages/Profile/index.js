@@ -14,17 +14,17 @@ import { encode } from 'base-64';
 
 import { Helmet } from 'react-helmet';
 import AccountApi from '../../Api/accountApi';
-import mFunction from '../../function';
+import { validatePassword, validatePhoneNumber } from '~/Utils';
 
-import Loading from '../../Components/Loading/loading';
-import Message from '../../Components/Message/message';
-import { Success } from '../../Components/Alert/alert';
+import Loading from '~/Components/Loading';
+import Message from '~/Components/Message';
+import { Success } from '~/Components/Alert/index';
 // import logo from '../../assets/logo.png';
 
 import cloudinaryApi from '../../Api/cloudinaryAPI';
 
-import userSlice from '../../Redux/slices/userSlice';
-import userSelector from '../../Redux/slices/userSlice';
+import userSlice from '~/Redux/slices/userSlice';
+import { userSelector } from '~/Redux/selector';
 
 function Profile() {
     const currentUser = useSelector(userSelector);
@@ -169,7 +169,7 @@ function Profile() {
         });
     };
 
-    const validatePassword = () => {
+    const validateInputPassword = () => {
         let check = true;
 
         // #region OLD
@@ -204,7 +204,7 @@ function Profile() {
                 visible: true,
             });
             check = false;
-        } else if (!mFunction.validatePassword(passwords.new)) {
+        } else if (!validatePassword(passwords.new)) {
             setNewPasswordNote({
                 ...newPasswordNote,
                 type: 'err',
@@ -235,7 +235,7 @@ function Profile() {
                 visible: true,
             });
             check = false;
-        } else if (!mFunction.validatePassword(passwords.repeatNew)) {
+        } else if (!validatePassword(passwords.repeatNew)) {
             setRepeatNewPasswordNote({
                 ...repeatNewPasswordNote,
                 type: 'err',
@@ -267,7 +267,7 @@ function Profile() {
             password: encode(passwords.repeatNew),
         });
 
-        if (validatePassword()) {
+        if (validateInputPassword()) {
             setIsLoading(true);
             await AccountApi.update(values)
                 .then(() => {
@@ -309,7 +309,7 @@ function Profile() {
                 visible: true,
             });
             check = false;
-        } else if (!mFunction.validatePhoneNumber(values.contact)) {
+        } else if (!validatePhoneNumber(values.contact)) {
             setContactNote({
                 ...contactNote,
                 type: 'err',

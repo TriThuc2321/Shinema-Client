@@ -12,12 +12,11 @@ import { red } from '@mui/material/colors';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { movieCornerSelector } from '../../redux/selector';
+import { movieCornerSelector } from '~/Redux/selector';
 import movieCornerSlice from '../../Redux/slices/movieCornerSlice';
 
 import CastCorner from './Component/Cast/cast';
 import FilmCorner from './Component/Film/film';
-import MainNavBar from '../../components/MainNavBar/mainNavBar';
 
 function Corner() {
     const dispatch = useDispatch();
@@ -55,7 +54,6 @@ function Corner() {
             <Helmet>
                 <title>Cimena Corner</title>
             </Helmet>
-            <MainNavBar />
             <ThemeProvider theme={tabTheme}>
                 <Box sx={{ width: '100%', typography: 'body1' }}>
                     <TabContext value={value}>

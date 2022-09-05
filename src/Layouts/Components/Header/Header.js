@@ -51,6 +51,10 @@ function NotSignInMenu() {
     return (
         <div className={cx('login')}>
             <p>
+                <Link to="/corner/movie/popular">FILMDOM</Link>
+            </p>
+
+            <p>
                 <Link to="/login">LOGIN</Link>
             </p>
 

@@ -12,15 +12,14 @@ import Box from '@mui/material/Box';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 import { useSelector } from 'react-redux';
-import tmdbApi, { category } from '../../api/tmdbApi';
+import tmdbApi, { category } from '~/Api/tmdbApi';
 
-import apiConfig from '../../api/apiConfig';
-import ShowTimeApi from '../../api/showTimeApi';
-import mFunction from '../../function';
+import apiConfig from '~/Api/apiConfig';
+import ShowTimeApi from '~/Api/showTimeApi';
+import { subDate, removeDuplicates } from '~/Utils';
 
 import CastList from './Component/CastList/castList';
 import VideoList from './Component/VideoList/videoList';
-import MainNavBar from '../../components/MainNavBar/mainNavBar';
 import FilmSlider from './Component/FilmSlider/filmSlider';
 
 function FilmDetails() {
@@ -62,12 +61,12 @@ function FilmDetails() {
             await showTimeList.forEach((showTime) => {
                 showTime.listDateTime.forEach((object) => {
                     console.log(object.date);
-                    if (mFunction.subDate(object.date, current) >= 1) dateArray.push(object.date);
+                    if (subDate(object.date, current) >= 1) dateArray.push(object.date);
                     setDateArray([...dateArray, object.date]);
                 });
             });
 
-            setDateArray(mFunction.removeDuplicates(dateArray));
+            setDateArray(removeDuplicates(dateArray));
         };
 
         getDate();
@@ -85,7 +84,6 @@ function FilmDetails() {
                         <title>{film.title || film.name}</title>
                     </Helmet>
 
-                    <MainNavBar />
                     <div
                         className="banner"
                         style={{

@@ -30,5 +30,6 @@ module.exports = {
         'react/jsx-wrap-multilines': 0,
         'no-console': 0,
         'linebreak-style': 0,
+        'object-curly-newline': 0,
     },
 };

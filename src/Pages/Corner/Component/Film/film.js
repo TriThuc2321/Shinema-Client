@@ -14,11 +14,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
-import apiConfig from '../../../api/apiConfig';
-import tmdbApi, { movieType } from '../../../api/tmdbApi';
+import apiConfig from '~/Api/apiConfig';
+import tmdbApi, { movieType } from '~/Api/tmdbApi';
 
-import { movieCornerSlice } from '../../../redux/slices/movieCornerSlice';
-import { movieCornerSelector } from '../../../redux/selector';
+import movieCornerSlice from '~/Redux/slices/movieCornerSlice';
+import { movieCornerSelector } from '~/Redux/selector';
 
 function FilmCorner() {
     const { keyword } = useParams();

@@ -5,7 +5,10 @@ import config from '~/Configs';
 const publicRoutes = [
     { path: config.routes.home, component: Home },
     { path: config.routes.login, component: Login, layout: DetailPageLayout },
-    { path: config.routes.corner, component: Corner },
+    { path: config.routes.corner.movies_search, component: Corner },
+    { path: config.routes.corner.movies_type, component: Corner },
+    { path: config.routes.corner.people, component: Corner },
+    { path: config.routes.corner.people_search, component: Corner },
     { path: config.routes.people_details, component: PeopleDetails },
     { path: config.routes.film_details, component: FilmDetails },
 ];

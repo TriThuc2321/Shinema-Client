@@ -12,8 +12,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
-import apiConfig from '../../../api/apiConfig';
-import tmdbApi from '../../../api/tmdbApi';
+import apiConfig from '~/Api/apiConfig';
+import tmdbApi from '~/Api/tmdbApi';
 
 function CastCorner() {
     const [peopleItems, setPeopleItems] = useState([]);

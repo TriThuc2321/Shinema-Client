@@ -1,5 +1,5 @@
 import classNames from 'classnames/bind';
-import Footer from '../Components/Footer';
+import Footer from '../Components/Footer/Footer';
 import styles from './DetailPageLayout.module.scss';
 
 const cx = classNames.bind(styles);

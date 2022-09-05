@@ -18,8 +18,8 @@ import { useNavigate } from 'react-router';
 
 import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import apiConfig from '../../api/apiConfig';
-import tmdbApi, { movieType } from '../../api/tmdbApi';
+import apiConfig from '~/Api/apiConfig';
+import tmdbApi, { movieType } from '~/Api/tmdbApi';
 
 const NUM_FILM_LOADING = 8;
 
