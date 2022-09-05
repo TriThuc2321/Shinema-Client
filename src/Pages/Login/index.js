@@ -24,12 +24,12 @@ import { red, grey } from '@mui/material/colors';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import AccountApi from '~/api/accountApi';
-import { validateEmail, validatePassword } from '~/utils';
-import Loading from '~/components/Loading';
+import AccountApi from '~/Api/accountApi';
+import { validateEmail, validatePassword } from '~/Utils';
+import Loading from '~/Components/Loading';
 import logoPng from '~/assets/logo_png.png';
 import backgroundLogin from '~/assets/background_login.jpg';
-import userSlice from '~/redux/slices/userSlice.js';
+import userSlice from '~/Redux/slices/userSlice.js';
 
 function Login() {
     const navigate = useNavigate();

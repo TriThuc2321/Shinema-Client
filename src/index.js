@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom/client';
 import { HelmetProvider } from 'react-helmet-async';
 import { Provider } from 'react-redux';
 import App from './App';
-import GlobalStyle from '~/components/GlobalStyle';
-import Store from './redux/store';
+import GlobalStyle from '~/Components/GlobalStyle';
+import Store from './Redux/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

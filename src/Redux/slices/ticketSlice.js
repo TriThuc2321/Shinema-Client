@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import ticketApi from '../../api/ticketApi';
+import ticketApi from '../../Api/ticketApi';
 
 export const getByUser = createAsyncThunk('ticket/getByUser', async (data, { rejectWithValue }) => {
     const response = await ticketApi.getByUser(data);

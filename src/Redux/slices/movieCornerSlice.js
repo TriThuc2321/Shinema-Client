@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { movieType } from '../../api/tmdbApi';
+import { movieType } from '../../Api/tmdbApi';
 
 const movieCornerSlice = createSlice({
     name: 'corner__movie',

@@ -6,8 +6,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 
 import { useNavigate } from 'react-router';
-import tmdbApi, { movieType } from '~/api/tmdbApi';
-import apiConfig from '~/api/apiConfig';
+import tmdbApi, { movieType } from '~/Api/tmdbApi';
+import apiConfig from '~/Api/apiConfig';
 
 function Slider() {
     SwiperCore.use([Autoplay]);
