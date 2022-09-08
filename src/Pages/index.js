@@ -5,3 +5,4 @@ export { default as Corner } from './Corner';
 export { default as FilmDetails } from './FilmDetail';
 export { default as PeopleDetails } from './PeopleDetail';
 export { default as TransactionHistory } from './TransactionHistory';
+export { default as Manager } from './Manager';
