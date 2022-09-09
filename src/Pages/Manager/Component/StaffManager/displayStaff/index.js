@@ -15,13 +15,14 @@ import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Grid from '@mui/material/Grid';
 import { useDispatch, useSelector } from 'react-redux';
-import Row from './Row';
-import { createData } from '../staffManageRow/staffManageRow';
+// eslint-disable-next-line import/no-cycle
+import Row, { createData } from './Row';
+
 // eslint-disable-next-line import/no-cycle
 import { CustomFillButton } from '../index';
-import { styles } from './styles';
-import { getAllStaff } from '../../../redux/slices/staffSlice';
-import { currentStaffList } from '../../../redux/selector';
+import styles from './styles';
+import { getAllStaff } from '~/Redux/slices/staffSlice';
+import { currentStaffList } from '~/Redux/selector';
 
 function DisplayStaff() {
     const [staffList, setStaffList] = useState([]);

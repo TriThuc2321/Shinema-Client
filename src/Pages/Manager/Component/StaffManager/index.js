@@ -1,16 +1,13 @@
-// eslint-disable-next-line no-unused-vars
-import { Typography } from '@mui/material';
-// eslint-disable-next-line no-unused-vars
-import React, { useState, useEffect } from 'react';
+/* eslint-disable import/no-cycle */
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
-import EditStaff from './editStaff/editStaff';
-import NewStaff from './newStaff/newStaff';
-// eslint-disable-next-line import/no-cycle
-import DisplayStaff from './displayStaff';
+import EditStaff from './editStaff/index';
+import NewStaff from './newStaff/index';
+import DisplayStaff from './displayStaff/index';
 
 export function StaffManager() {
     return (

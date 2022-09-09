@@ -8,15 +8,16 @@ import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
-import { styles } from './styles';
+import styles from './styles';
 
+// eslint-disable-next-line import/no-cycle
 import { CustomFillButton, CustomOutlineButton } from '../index';
 import { onlyLettersAndSpaces, containNumeric, validatePhoneNumber, validateEmail } from '~/Utils';
 import AccountApi from '~/Api/accountApi';
-import Loading from '../../../components/Loading/loading';
-import { Success, Error } from '../../Alert/alert';
-import cloudinaryApi from './~/Api/cloudinaryAPI';
-import Logo from '../../../assets/logo.png';
+import Loading from '~/Components/Loading';
+import { Success, Error } from '~/Components/Alert';
+import cloudinaryApi from '~/Api/cloudinaryAPI';
+import Logo from '~/Assets/Logo.png';
 
 function EditStaff() {
     const { id } = useParams();

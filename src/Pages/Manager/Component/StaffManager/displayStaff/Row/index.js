@@ -24,15 +24,15 @@ import MaleIcon from '@mui/icons-material/Male';
 import FemaleIcon from '@mui/icons-material/Female';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import Logo from '../../../assets/logo.png';
-import Loading from '../../Loading/loading';
-import { styles } from './styles';
-import { Success, Error } from '../../Alert/alert';
+import Logo from '~/Assets/Logo.png';
+import Loading from '~/Components/Loading';
+import styles from './styles';
+import { Success, Error } from '~/Components/Alert';
 
 // eslint-disable-next-line import/no-cycle
 import { CustomFillButton, CustomOutlineButton } from '../../index';
-import AccountApi from '../../../api/accountApi';
-import { staffSlice } from '../../../redux/slices/staffSlice';
+import AccountApi from '~/Api/accountApi';
+import { staffSlice } from '~/Redux/slices/staffSlice';
 
 export const createData = (staff) => {
     const { email } = staff;

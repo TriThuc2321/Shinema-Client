@@ -23,10 +23,9 @@ import { Helmet } from 'react-helmet-async';
 import ShowTimeManager from './Component/ShowTimeManager';
 import TheaterManager from './Component/TheaterManager';
 import Statistics from './Component/Statistics';
-import StaffManager from './Component/StaffManager';
-import Censor from '../Censor';
-// eslint-disable-next-line import/named
-import { userSlice } from '~/Redux/slices/userSlice';
+import { StaffManager } from './Component/StaffManager';
+import Censor from './Component/Censor';
+import userSlice from '~/Redux/slices/userSlice';
 import { userSelector } from '~/Redux/selector';
 
 function Manager() {

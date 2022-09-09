@@ -1,0 +1,14 @@
+.listFilter {
+    color: #ffffff;
+    padding-left: 50px;
+}
+
+.listFilter__item {
+    padding: 10px 0px;
+    cursor: pointer;
+}
+
+.listFilter__item--selected {
+    color: #c62828;
+    text-decoration: underline;
+}

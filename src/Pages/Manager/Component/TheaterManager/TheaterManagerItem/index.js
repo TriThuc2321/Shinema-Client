@@ -3,7 +3,7 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import styles from './styles';
 
-import TheaterRoom from '../TheaterRoom/theaterRoom';
+import TheaterRoom from './TheaterRoom/index';
 
 function TheaterManagerItem({ item }) {
     return (

@@ -13,14 +13,14 @@ import Select from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
-import mFunction from '../../../function';
+import { onlyLettersAndSpaces, validateEmail, validatePhoneNumber } from '~/Utils';
 import AccountApi from '~/Api/accountApi';
 import cloudinaryApi from '~/Api/cloudinaryAPI';
 import Loading from '~/Components/Loading';
 import { Success, Error } from '~/Components/Alert';
-import Logo from '../../../assets/logo.png';
-import { styles } from './styles';
-import { staffSlice } from '../../../redux/slices/staffSlice';
+import Logo from '~/Assets/Logo.png';
+import styles from './styles';
+import { staffSlice } from '~/Redux/slices/staffSlice';
 
 function NewStaff() {
     const navigate = useNavigate();
@@ -155,7 +155,7 @@ function NewStaff() {
                 alert: 'Please enter your name!',
             });
             flag = false;
-        } else if (!mFunction.onlyLettersAndSpaces(values.name)) {
+        } else if (onlyLettersAndSpaces(values.name)) {
             setValidName({
                 check: false,
                 alert: 'Invalid name!',
@@ -169,7 +169,7 @@ function NewStaff() {
                 alert: 'Please enter email',
             });
             flag = false;
-        } else if (!mFunction.validateEmail(values.email)) {
+        } else if (validateEmail(values.email)) {
             setValidEmail({
                 check: false,
                 alert: 'Your email is not valid!',
@@ -194,7 +194,7 @@ function NewStaff() {
                 alert: 'Please enter phone number',
             });
             flag = false;
-        } else if (!mFunction.validatePhoneNumber(values.contact)) {
+        } else if (validatePhoneNumber(values.contact)) {
             setValidPhone({
                 check: false,
                 alert: 'Invalid phone number!',

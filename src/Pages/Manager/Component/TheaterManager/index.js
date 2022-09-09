@@ -4,12 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import Box from '@mui/material/Box';
 import { theaterSelector } from '~/Redux/selector';
 
-import TheaterApi from '~Api//theaterApi';
-import TheaterManagerItem from '../TheaterManagerItem/theaterManagerItem';
+import TheaterApi from '~/Api/theaterApi';
+import TheaterManagerItem from './TheaterManagerItem/index';
 
 import Loading from '~/Components/Loading';
 
-import { theaterSlice } from './~/Redux/slices/theaterSlice';
+import theaterSlice from '~/Redux/slices/theaterSlice';
 
 // const color = "white";
 // const CustomizedSelect = styled(Select)`
