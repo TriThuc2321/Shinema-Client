@@ -10,6 +10,8 @@ const routes = {
     },
     people_details: '/peopleDetails/:id',
     film_details: '/filmDetails/:id',
+    transactions: '/transactions',
+    booking: '/booking/:id',
 };
 
 export default routes;

@@ -1,5 +1,5 @@
 import { DetailPageLayout } from '~/Layouts';
-import { Home, Login, Corner, PeopleDetails, FilmDetails } from '../Pages';
+import { Home, Login, Corner, PeopleDetails, FilmDetails, TransactionHistory, Booking } from '../Pages';
 import config from '~/Configs';
 
 const publicRoutes = [
@@ -11,6 +11,9 @@ const publicRoutes = [
     { path: config.routes.corner.people_search, component: Corner },
     { path: config.routes.people_details, component: PeopleDetails },
     { path: config.routes.film_details, component: FilmDetails },
+    { path: config.routes.people_details_search, component: PeopleDetails },
+    { path: config.routes.transactions, component: TransactionHistory },
+    { path: config.routes.bookingSlice, component: Booking },
 ];
 
 const privateRoute = [];

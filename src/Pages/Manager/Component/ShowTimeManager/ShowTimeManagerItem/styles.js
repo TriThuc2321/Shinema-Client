@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-keys */
 const styles = {
     boxContainer: {
         width: '100%',
