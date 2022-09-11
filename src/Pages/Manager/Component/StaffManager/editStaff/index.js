@@ -17,7 +17,7 @@ import AccountApi from '~/Api/accountApi';
 import Loading from '~/Components/Loading';
 import { Success, Error } from '~/Components/Alert';
 import cloudinaryApi from '~/Api/cloudinaryAPI';
-import Logo from '~/Assets/Logo.png';
+import Logo from '~/Assets/logo.png';
 
 function EditStaff() {
     const { id } = useParams();

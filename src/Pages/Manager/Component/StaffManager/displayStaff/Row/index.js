@@ -24,7 +24,7 @@ import MaleIcon from '@mui/icons-material/Male';
 import FemaleIcon from '@mui/icons-material/Female';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import Logo from '~/Assets/Logo.png';
+import Logo from '~/Assets/logo.png';
 import Loading from '~/Components/Loading';
 import styles from './styles';
 import { Success, Error } from '~/Components/Alert';

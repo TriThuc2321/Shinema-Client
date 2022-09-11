@@ -1,6 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import ReactDOM from 'react-dom';
 import { HelmetProvider } from 'react-helmet-async';
+
 import { Provider } from 'react-redux';
 import App from './App';
 import GlobalStyle from '~/Components/GlobalStyle';

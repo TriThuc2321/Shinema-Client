@@ -18,7 +18,7 @@ import AccountApi from '~/Api/accountApi';
 import cloudinaryApi from '~/Api/cloudinaryAPI';
 import Loading from '~/Components/Loading';
 import { Success, Error } from '~/Components/Alert';
-import Logo from '~/Assets/Logo.png';
+import Logo from '~/Assets/logo.png';
 import styles from './styles';
 import { staffSlice } from '~/Redux/slices/staffSlice';
 

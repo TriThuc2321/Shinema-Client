@@ -1,6 +1,7 @@
 const routes = {
     home: '/',
     login: '/login',
+    register: '/register',
     profile: '/profile',
     corner: {
         movies_search: '/corner/movie/search/:keyword',
