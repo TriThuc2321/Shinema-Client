@@ -1,15 +1,10 @@
-import classNames from 'classnames/bind';
 import Footer from '../Components/Footer/Footer';
-import styles from './DetailPageLayout.module.scss';
-
-const cx = classNames.bind(styles);
+import { DetailHeader } from '../Components';
 
 function DetailPageLayout({ children }) {
     return (
         <div>
-            <header className={cx('wrapper')}>
-                <div className={cx('inner')}>Detail layput</div>
-            </header>
+            <DetailHeader />
             <div>{children}</div>
             <Footer />
         </div>

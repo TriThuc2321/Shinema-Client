@@ -1,10 +1,10 @@
 import Footer from '../Components/Footer/Footer';
-import Header from '../Components/Header';
+import { HomeHeader } from '../Components';
 
 function DefaultLayout({ children }) {
     return (
         <div>
-            <Header />
+            <HomeHeader />
             <div>{children}</div>
             <Footer />
         </div>

@@ -5,35 +5,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
-import styles from './Header.module.scss';
-
-import logoPng from '~/Assets/logo_png.png';
+import styles from './Login.module.scss';
 
 const cx = classNames.bind(styles);
 
-function Header() {
-    return (
-        <div className={cx('container')}>
-            <NavbarLink />
-            <NotSignInMenu />
-        </div>
-    );
-}
-function NavbarLink() {
-    return (
-        <div className={cx('nav-text')}>
-            <img src={logoPng} alt="logo_png" />
-            <p>
-                <a href="#popular">Popular</a>
-            </p>
-            <p>
-                <a href="#upcoming">Upcoming</a>
-            </p>
-            <p>
-                <a href="#top_rated">Top-rated</a>
-            </p>
-        </div>
-    );
+function Login() {
+    return <NotSignInMenu />;
 }
 
 function NotSignInMenu() {
@@ -74,4 +51,4 @@ function NotSignInMenu() {
     );
 }
 
-export default Header;
+export default Login;
