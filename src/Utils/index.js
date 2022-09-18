@@ -1,8 +1,5 @@
-export const validateEmail = (email) => {
-    // eslint-disable-next-line no-useless-escape
-    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    return reg.test(email);
-};
+/* eslint-disable no-useless-escape */
+export const validateEmail = (email) => /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
 export const validatePassword = (val) => val.length >= 6;
 
 export const validateObseneWord = (str) => {

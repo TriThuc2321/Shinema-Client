@@ -32,5 +32,7 @@ module.exports = {
         'linebreak-style': 0,
         'object-curly-newline': 0,
         'import/no-cycle': 0,
+        'jsx-a11y/no-noninteractive-element-interactions': 0,
+        'import/prefer-default-export': 0,
     },
 };

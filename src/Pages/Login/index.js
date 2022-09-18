@@ -85,14 +85,14 @@ function Login() {
         event.preventDefault();
     };
 
-    const checkInfo = async () => {
-        if (validateEmail(values.email)) {
+    const checkInfo = () => {
+        if (!validateEmail(values.email)) {
             setEmailErrVisible(true);
             return false;
         }
         setEmailErrVisible(false);
 
-        if (validatePassword(values.password)) {
+        if (!validatePassword(values.password)) {
             setPasswordErrVisible(true);
             return false;
         }
@@ -102,39 +102,39 @@ function Login() {
     };
 
     const loginHandle = async () => {
-        checkInfo().then((res) => {
-            if (res) {
-                setValues({ ...values, isLoading: true });
-                AccountApi.login(values.email, values.password)
-                    .then((result) => {
-                        setValues({ ...values, isLoading: false });
-                        if (result.data === 'Email not exist') {
-                            setEmailWarningVisible(true);
-                            setPasswordErrVisible(false);
-                        } else if (result.data === 'Password incorrect') {
-                            setEmailWarningVisible(false);
-                            setPasswordErrVisible(true);
+        const result = checkInfo();
+        console.log(result);
+        if (result) {
+            setValues({ ...values, isLoading: true });
+            AccountApi.login(values.email, values.password)
+                .then((res) => {
+                    setValues({ ...values, isLoading: false });
+                    if (result.data === 'Email not exist') {
+                        setEmailWarningVisible(true);
+                        setPasswordErrVisible(false);
+                    } else if (result.data === 'Password incorrect') {
+                        setEmailWarningVisible(false);
+                        setPasswordErrVisible(true);
+                    } else {
+                        setEmailWarningVisible(false);
+                        setPasswordErrVisible(false);
+
+                        localStorage.setItem('logged', true);
+                        if (!values.rememberAccount) {
+                            localStorage.setItem('rememberAccount', false);
+                            localStorage.setItem(encode('rememberEmail'), encode(values.email));
                         } else {
-                            setEmailWarningVisible(false);
-                            setPasswordErrVisible(false);
-
-                            localStorage.setItem('logged', true);
-                            if (!values.rememberAccount) {
-                                localStorage.setItem('rememberAccount', false);
-                                localStorage.setItem(encode('rememberEmail'), encode(values.email));
-                            } else {
-                                localStorage.setItem('rememberAccount', true);
-                                localStorage.setItem(encode('rememberEmail'), encode(values.email));
-                                localStorage.setItem(encode('rememberPassword'), encode(values.password));
-                            }
-
-                            dispatch(userSlice.actions.update(res.data));
-                            navigate('/');
+                            localStorage.setItem('rememberAccount', true);
+                            localStorage.setItem(encode('rememberEmail'), encode(values.email));
+                            localStorage.setItem(encode('rememberPassword'), encode(values.password));
                         }
-                    })
-                    .catch((err) => console.log(err));
-            }
-        });
+
+                        dispatch(userSlice.actions.update(res.data));
+                        navigate('/');
+                    }
+                })
+                .catch((err) => console.log(err));
+        }
     };
 
     const getAccount = () => {

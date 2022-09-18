@@ -1,10 +1,10 @@
-.login {
+.not-signed-in-menu {
     display: flex;
     align-items: center;
     color: #fff;
 }
 
-.login p {
+.not-signed-in-menu p {
     font-family: var(--font-family);
     font-weight: 500;
     font-size: 18px;
@@ -15,6 +15,43 @@
     transition: opacity 0.2 ease;
 }
 
-.login p:hover {
+.not-signed-in-menu p:hover {
     opacity: 0.8;
+}
+
+.signed-in-menu {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    align-items: flex-end;
+    cursor: pointer;
+
+    .list-menu {
+        display: flex;
+        position: absolute;
+        margin-top: 40px;
+        padding: 5px 0;
+        flex-direction: column;
+        border-radius: 10px;
+        background-color: #ff4920cf;
+
+        p:hover {
+            opacity: 0.8;
+        }
+
+        .menu-item {
+            display: flex;
+            padding: 8px 15px;
+            width: 200px;
+            justify-content: space-between;
+
+        }
+
+        .menu__line {
+            background-color: #ff8080;
+            height: 0.5px;
+            width: 100%;
+            margin-top: 10px;
+        }
+    }
 }

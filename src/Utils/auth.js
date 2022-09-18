@@ -1,6 +1,18 @@
-const checkLogged = () => {
+import { decode, encode } from 'base-64';
+
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import AccountApi from '~/Api/accountApi';
+import userSlice from '~/Redux/slices/userSlice';
+
+export const checkLogged = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
     const logged = localStorage.getItem('logged');
     const remember = localStorage.getItem('rememberAccount');
+
+    const _currentUser = useSelector((state) => state.users.instance);
 
     // console.log(remember == 'true')
     // console.log(logged == 'true')
@@ -12,9 +24,8 @@ const checkLogged = () => {
             .then((res) => {
                 if (res.data !== 'Email not exist' && res.data !== 'Password incorrect') {
                     AccountApi.getByEmail(email)
-                        .then((res) => {
-                            dispatch(userSlice.actions.update(res.data));
-                            setLoaded(true);
+                        .then((resAccount) => {
+                            dispatch(userSlice.actions.update(resAccount.data));
                         })
                         .catch((err) => console.log(err));
                 } else {
@@ -23,9 +34,5 @@ const checkLogged = () => {
                 }
             })
             .catch((err) => console.log(err));
-    } else {
-        setLoaded(true);
     }
 };
-
-export default checkLogged;
