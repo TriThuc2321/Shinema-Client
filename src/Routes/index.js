@@ -1,4 +1,4 @@
-import { Home, Login, Register, Corner, PeopleDetails, FilmDetails, TransactionHistory, Booking } from '../Pages';
+import { Home, Login, Register, Corner, PeopleDetails, FilmDetails, TransactionHistory, Booking } from '~/Pages';
 import { DetailPageLayout } from '~/Layouts';
 
 import config from '~/Configs';
