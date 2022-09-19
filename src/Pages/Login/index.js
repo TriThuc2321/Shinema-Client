@@ -103,7 +103,6 @@ function Login() {
 
     const loginHandle = async () => {
         const result = checkInfo();
-        console.log(result);
         if (result) {
             setValues({ ...values, isLoading: true });
             AccountApi.login(values.email, values.password)

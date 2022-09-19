@@ -34,5 +34,6 @@ module.exports = {
         'import/no-cycle': 0,
         'jsx-a11y/no-noninteractive-element-interactions': 0,
         'import/prefer-default-export': 0,
+        'jsx-a11y/label-has-associated-control': 0,
     },
 };

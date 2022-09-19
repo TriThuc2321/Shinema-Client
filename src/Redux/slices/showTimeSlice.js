@@ -25,4 +25,4 @@ const showTimeSlice = createSlice({
     },
 });
 
-export default showTimeSlice.reducer;
+export default showTimeSlice;
