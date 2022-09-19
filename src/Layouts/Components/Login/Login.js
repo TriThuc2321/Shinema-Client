@@ -23,7 +23,6 @@ function Login() {
     const [logged, setLogged] = useState(false);
     useEffect(() => {
         const logedIn = localStorage.getItem('logged');
-        console.log(logedIn);
         setLogged(logedIn);
     }, []);
 
@@ -77,7 +76,8 @@ function SignedInMenu() {
     };
 
     const logoutHandle = () => {
-        localStorage.setItem('logged', false);
+        localStorage.setItem('accessToken', '');
+        localStorage.setItem('refreshToken', '');
         dispatch(userSlice.actions.update(''));
         navigate('/login');
     };

@@ -7,7 +7,7 @@ function App() {
     return (
         <Router>
             <Routes>
-                {publicRoutes.map((route, index) => {
+                {publicRoutes.map((route) => {
                     const Page = route.component;
                     let Layout = DefaultLayout;
 
@@ -19,8 +19,7 @@ function App() {
 
                     return (
                         <Route
-                            // eslint-disable-next-line react/no-array-index-key
-                            key={index}
+                            key={route.path}
                             path={route.path}
                             element={
                                 <Layout>
