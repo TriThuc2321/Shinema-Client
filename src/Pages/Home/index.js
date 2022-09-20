@@ -4,12 +4,9 @@ import Slider from './Components/Slider/slider';
 import FilmSlider from './Components/FilmSlider/filmSlider';
 import { movieType, category } from '~/Api/tmdbApi';
 
-import { checkLogged } from '~/Utils/auth';
-
 const cx = classNames.bind(styles);
 
 function Home() {
-    checkLogged();
     return (
         <div className={cx('container')}>
             <Slider />

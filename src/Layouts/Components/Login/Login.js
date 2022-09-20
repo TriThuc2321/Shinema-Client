@@ -78,6 +78,7 @@ function SignedInMenu() {
     const logoutHandle = () => {
         localStorage.setItem('accessToken', '');
         localStorage.setItem('refreshToken', '');
+        localStorage.setItem('logged', false);
         dispatch(userSlice.actions.update(''));
         navigate('/login');
     };

@@ -10,7 +10,7 @@
     --color-blog: #042c54;
     --color-text: #81AFDD;
     --color-subtext: #FF8A71;
-    --background-gradient: : linear-gradient(#040C18, #071830, #0C264E);
+    --background-gradient: linear-gradient(#040C18, #071830, #0C264E);
 }
 
 * {
@@ -22,7 +22,7 @@
 
 body {
     font-family: 'Manrope', sans-serif;
-    background-color: var(--color-bg);
+    background: var(--background-gradient);
 }
 
 a {
