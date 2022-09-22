@@ -3,35 +3,28 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import * as React from 'react';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import LoginRoundedIcon from '@mui/icons-material/LoginRounded';
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 
-import { Helmet } from 'react-helmet-async';
 import ShowTimeManager from './Component/ShowTimeManager';
 import TheaterManager from './Component/TheaterManager';
 import Statistics from './Component/Statistics';
 import { StaffManager } from './Component/StaffManager';
 import Censor from './Component/Censor';
-import userSlice from '~/Redux/slices/userSlice';
 import { userSelector } from '~/Redux/selector';
 
 function Manager() {
     const user = useSelector(userSelector);
     const navigate = useNavigate();
-    const dispatch = useDispatch();
 
     useEffect(() => {
         const checkAuth = () => {
@@ -78,31 +71,9 @@ function Manager() {
         }
     }, []);
 
-    const logoutHandle = () => {
-        localStorage.setItem('logged', false);
-        dispatch(userSlice.actions.update(''));
-        navigate('/login');
-    };
-
     return (
         <div>
-            <Helmet>
-                <title>Data Manager</title>
-            </Helmet>
-
             <ThemeProvider theme={tabTheme}>
-                <Stack direction="row" sx={{ alignItems: 'center', justifyContent: 'space-between', margin: 5 }}>
-                    <Typography sx={{ color: '#fff', fontSize: 20 }}>MANAGER</Typography>
-                    <Button
-                        sx={{ paddingX: 2.5, paddingY: 1 }}
-                        onClick={() => logoutHandle()}
-                        variant="contained"
-                        endIcon={<LoginRoundedIcon />}
-                    >
-                        Logout
-                    </Button>
-                </Stack>
-
                 {user.rank === 'Censor' ? (
                     <Censor />
                 ) : (
