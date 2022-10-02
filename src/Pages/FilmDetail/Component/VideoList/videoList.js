@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import tmdbApi from '../../../../Api/tmdbApi';
+import tmdbApi from '~/Api/tmdbApi';
 
 import './videoList.css';
 

@@ -1,7 +1,5 @@
 /* eslint-disable no-use-before-define */
 /* eslint-disable react/jsx-props-no-spreading */
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 
@@ -24,18 +22,6 @@ import { userSelector } from '~/Redux/selector';
 
 function Manager() {
     const user = useSelector(userSelector);
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        const checkAuth = () => {
-            if (user) {
-                if (user.rank !== 'Manager' && user.rank !== 'Admin') {
-                    navigate('/');
-                }
-            }
-        };
-        checkAuth();
-    }, [user]);
 
     const tabTheme = createTheme({
         palette: {
@@ -47,29 +33,30 @@ function Manager() {
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
-        if (newValue === 0) {
-            navigate('/manager/showtime');
-        } else if (newValue === 1) {
-            navigate('/manage=r/statistic');
-        } else if (newValue === 2) {
-            navigate('/manager/theater');
-        } else if (newValue === 3) {
-            navigate('/manager/staff');
-        }
+        console.log(newValue);
+        // if (newValue === 0) {
+        //     navigate('/manager/showtime');
+        // } else if (newValue === 1) {
+        //     navigate('/manage=r/statistic');
+        // } else if (newValue === 2) {
+        //     navigate('/manager/theater');
+        // } else if (newValue === 3) {
+        //     navigate('/manager/staff');
+        // }
     };
 
-    useEffect(() => {
-        const path = window.location.pathname;
+    // useEffect(() => {
+    //     const path = window.location.pathname;
 
-        if (path.includes('manager/statistic')) {
-            setValue(1);
-        } else if (path.includes('manager/theater')) {
-            setValue(2);
-        }
-        if (path.includes('manager/staff')) {
-            setValue(3);
-        }
-    }, []);
+    //     if (path.includes('manager/statistic')) {
+    //         setValue(1);
+    //     } else if (path.includes('manager/theater')) {
+    //         setValue(2);
+    //     }
+    //     if (path.includes('manager/staff')) {
+    //         setValue(3);
+    //     }
+    // }, []);
 
     return (
         <div>

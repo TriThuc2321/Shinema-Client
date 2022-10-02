@@ -8,6 +8,7 @@ import {
     TransactionHistory,
     Booking,
     Manager,
+    Review,
 } from '~/Pages';
 import { DetailPageLayout, ManagerLayout } from '~/Layouts';
 import config from '~/Configs';
@@ -38,7 +39,7 @@ export const staff = [
 ];
 
 export const censor = [
-    { path: config.routes.home, component: Manager, layout: ManagerLayout },
+    { path: config.routes.home, component: Review, layout: null },
     { path: config.routes.login, component: Login, layout: null },
     { path: config.routes.register, component: Register, layout: null },
 ];

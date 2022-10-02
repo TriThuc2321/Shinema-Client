@@ -14,12 +14,16 @@ function App() {
     useEffect(() => {
         const _checkLogged = async () => {
             const result = await checkLogged();
-            if (!user || result.data.email !== user.instance.email) {
-                dispatch(userSlice.actions.update(result.data));
+            if (result) {
+                if (!user || result.data.email !== user.instance.email) {
+                    dispatch(userSlice.actions.update(result.data));
+                }
+                const listRoutes = getRoutes(result.data.rank);
+                setRoutes(listRoutes);
+            } else {
+                const listRoutes = getRoutes('Guest');
+                setRoutes(listRoutes);
             }
-
-            const listRoutes = getRoutes(result.data.rank);
-            setRoutes(listRoutes);
         };
         _checkLogged();
     }, [user]);

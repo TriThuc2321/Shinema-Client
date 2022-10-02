@@ -8,3 +8,4 @@ export { default as PeopleDetails } from './PeopleDetail';
 export { default as TransactionHistory } from './TransactionHistory';
 export { default as Manager } from './Manager';
 export { default as Booking } from './Booking';
+export { default as Review } from './Review';

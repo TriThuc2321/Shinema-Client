@@ -1,0 +1,23 @@
+.casts{
+    display: grid;
+    grid-template-columns:  repeat(auto-fill, minmax(90px, 1fr));
+    gap: 10px;
+    padding-left: 30px;
+    padding-top: 15px;
+
+}
+
+.casts__item{
+}
+
+.casts__item__img{
+    padding-top: 160px;
+    background-size: cover;
+    margin-bottom :0.5rem;
+}
+
+.casts__item__name{
+    font-family: var(--font-family);
+    font-size:0.8rem;
+
+}
