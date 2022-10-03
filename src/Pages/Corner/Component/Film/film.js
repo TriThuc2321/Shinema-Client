@@ -14,7 +14,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { grey } from '@mui/material/colors';
 import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
-import apiConfig from '~/Api/apiConfig';
 import tmdbApi, { movieType } from '~/Api/tmdbApi';
 
 import movieCornerSlice from '~/Redux/slices/movieCornerSlice';
@@ -30,6 +29,13 @@ function FilmCorner() {
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState();
 
+    useEffect(() => {
+        const arr = [];
+        movieItems.forEach((e) => arr.push(e.id));
+
+        console.log(JSON.stringify(arr));
+        console.log(arr.length);
+    }, [movieItems]);
     const dispatch = useDispatch();
 
     const openMoreHandler = async () => {
@@ -144,38 +150,10 @@ function FilmCorner() {
 
                 <div className="film__container__content">
                     <div className="film__container__view-more-content">
-                        <div className="film__container__view-more-content-list">
-                            {movieItems.map((item) => (
-                                <SlideItem item={item} key={item.id} />
-                            ))}
-                        </div>
                         {page < totalPages ? <ViewMoreButton onClick={openMoreHandler} /> : <></>}
                     </div>
                 </div>
             </div>
-        </div>
-    );
-}
-
-function SlideItem(props) {
-    const { item } = props;
-    const background = apiConfig.originalImage(item.poster_path ? item.poster_path : item.backdrop_path);
-    // const dispatch = useDispatch();
-    // const data = useSelector(movieSelector)
-    const navigate = useNavigate();
-
-    const GoToDetails = () => {
-        // dispatch(
-        //     movieSlice.actions.addMovie({name: 'ccccccc'})
-        // )
-
-        // console.log(data.movie)
-        navigate(`/filmDetails/${item.id}`);
-    };
-    return (
-        <div className="film__item__container" onClick={GoToDetails}>
-            <img className="film__item__container__img" src={background} alt={item.title} />
-            <babel className="film__item__container__title">{item.title}</babel>
         </div>
     );
 }
