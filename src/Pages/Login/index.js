@@ -26,7 +26,7 @@ import { useDispatch } from 'react-redux';
 
 import AccountApi from '~/Api/accountApi';
 import { validateEmail, validatePassword } from '~/Utils';
-import Loading from '~/Components/Loading';
+import Loading from '~/Components/Loading/index.js';
 import logoPng from '~/Assets/logo_png.png';
 import backgroundLogin from '~/Assets/background_login.jpg';
 import userSlice from '~/Redux/slices/userSlice.js';
