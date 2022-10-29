@@ -1,9 +1,9 @@
 import axios from 'axios';
-import { URL_SERVER } from '../Constants';
+import { getUrlDatabase } from '~/Configs/url';
 import ApiAuthen from './ApiAuthen';
 
 const ApiDatabase = axios.create({
-    baseURL: URL_SERVER,
+    baseURL: getUrlDatabase(),
     headers: {
         'Content-Type': 'application/json',
     },

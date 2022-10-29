@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { FaTelegramPlane } from 'react-icons/fa';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BsTelephoneFill } from 'react-icons/bs';
-import Logo from '~/Assets/logo.png';
+import Logo from '../../../Assets/logo.png';
 
 function Footer() {
     const defaultColor = '#fff';

@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Fragment, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import userSlice from '~/Redux/slices/userSlice';
@@ -29,33 +29,31 @@ function App() {
     }, [user]);
 
     return (
-        <Router>
-            <Routes>
-                {routes &&
-                    routes.map((route) => {
-                        const Page = route.component;
-                        let Layout = DefaultLayout;
+        <Routes>
+            {routes &&
+                routes.map((route) => {
+                    const Page = route.component;
+                    let Layout = DefaultLayout;
 
-                        if (route.layout) {
-                            Layout = route.layout;
-                        } else if (route.layout === null) {
-                            Layout = Fragment;
-                        }
+                    if (route.layout) {
+                        Layout = route.layout;
+                    } else if (route.layout === null) {
+                        Layout = Fragment;
+                    }
 
-                        return (
-                            <Route
-                                key={route.path}
-                                path={route.path}
-                                element={
-                                    <Layout>
-                                        <Page />
-                                    </Layout>
-                                }
-                            />
-                        );
-                    })}
-            </Routes>
-        </Router>
+                    return (
+                        <Route
+                            key={route.path}
+                            path={route.path}
+                            element={
+                                <Layout>
+                                    <Page />
+                                </Layout>
+                            }
+                        />
+                    );
+                })}
+        </Routes>
     );
 }
 

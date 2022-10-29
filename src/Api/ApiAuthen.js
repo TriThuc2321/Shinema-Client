@@ -1,8 +1,8 @@
 import axios from 'axios';
-import { URL_AUTHEN } from '../Constants';
+import { getUrlAuthen } from '~/Configs/url';
 
 const ApiAuthen = axios.create({
-    baseURL: URL_AUTHEN,
+    baseURL: getUrlAuthen(),
     headers: {
         'Content-Type': 'application/json',
     },
