@@ -11,50 +11,50 @@ import {
     Review,
 } from '~/Pages';
 import { DetailPageLayout, ManagerLayout } from '~/Layouts';
-import config from '~/Configs';
+import routes from '~/Configs/routes';
 
 export const guest = [
-    { path: config.routes.home, component: Home },
-    { path: config.routes.login, component: Login, layout: null },
-    { path: config.routes.register, component: Register, layout: null },
-    { path: config.routes.corner.movies_search, component: Corner, layout: DetailPageLayout },
-    { path: config.routes.corner.movies_type, component: Corner, layout: DetailPageLayout },
-    { path: config.routes.corner.people, component: Corner, layout: DetailPageLayout },
-    { path: config.routes.corner.people_search, component: Corner, layout: DetailPageLayout },
-    { path: config.routes.people_details, component: PeopleDetails, layout: DetailPageLayout },
-    { path: config.routes.film_details, component: FilmDetails, layout: DetailPageLayout },
-    { path: config.routes.people_details_search, component: PeopleDetails, layout: DetailPageLayout },
+    { path: routes.home, component: Home },
+    { path: routes.login, component: Login, layout: null },
+    { path: routes.register, component: Register, layout: null },
+    { path: routes.corner.movies_search, component: Corner, layout: DetailPageLayout },
+    { path: routes.corner.movies_type, component: Corner, layout: DetailPageLayout },
+    { path: routes.corner.people, component: Corner, layout: DetailPageLayout },
+    { path: routes.corner.people_search, component: Corner, layout: DetailPageLayout },
+    { path: routes.people_details, component: PeopleDetails, layout: DetailPageLayout },
+    { path: routes.film_details, component: FilmDetails, layout: DetailPageLayout },
+    { path: routes.people_details_search, component: PeopleDetails, layout: DetailPageLayout },
 ];
 
 export const admin = [
-    { path: config.routes.home, component: Manager, layout: ManagerLayout },
-    { path: config.routes.login, component: Login, layout: null },
-    { path: config.routes.register, component: Register, layout: null },
+    { path: routes.home, component: Manager, layout: ManagerLayout },
+    { path: routes.login, component: Login, layout: null },
+    { path: routes.register, component: Register, layout: null },
 ];
 
 export const staff = [
-    { path: config.routes.home, component: Manager, layout: ManagerLayout },
-    { path: config.routes.login, component: Login, layout: null },
-    { path: config.routes.register, component: Register, layout: null },
+    { path: routes.home, component: Manager, layout: ManagerLayout },
+    { path: routes.login, component: Login, layout: null },
+    { path: routes.register, component: Register, layout: null },
 ];
 
 export const censor = [
-    { path: config.routes.home, component: Review, layout: null },
-    { path: config.routes.login, component: Login, layout: null },
-    { path: config.routes.register, component: Register, layout: null },
+    { path: routes.home, component: Review, layout: null },
+    { path: routes.login, component: Login, layout: null },
+    { path: routes.register, component: Register, layout: null },
 ];
 
 export const customer = [
-    { path: config.routes.home, component: Home },
-    { path: config.routes.login, component: Login, layout: null },
-    { path: config.routes.register, component: Register, layout: null },
-    { path: config.routes.corner.movies_search, component: Corner, layout: DetailPageLayout },
-    { path: config.routes.corner.movies_type, component: Corner, layout: DetailPageLayout },
-    { path: config.routes.corner.people, component: Corner, layout: DetailPageLayout },
-    { path: config.routes.corner.people_search, component: Corner, layout: DetailPageLayout },
-    { path: config.routes.people_details, component: PeopleDetails, layout: DetailPageLayout },
-    { path: config.routes.film_details, component: FilmDetails, layout: DetailPageLayout },
-    { path: config.routes.people_details_search, component: PeopleDetails, layout: DetailPageLayout },
-    { path: config.routes.transactions, component: TransactionHistory, layout: DetailPageLayout },
-    { path: config.routes.bookingSlice, component: Booking, layout: DetailPageLayout },
+    { path: routes.home, component: Home },
+    { path: routes.login, component: Login, layout: null },
+    { path: routes.register, component: Register, layout: null },
+    { path: routes.corner.movies_search, component: Corner, layout: DetailPageLayout },
+    { path: routes.corner.movies_type, component: Corner, layout: DetailPageLayout },
+    { path: routes.corner.people, component: Corner, layout: DetailPageLayout },
+    { path: routes.corner.people_search, component: Corner, layout: DetailPageLayout },
+    { path: routes.people_details, component: PeopleDetails, layout: DetailPageLayout },
+    { path: routes.film_details, component: FilmDetails, layout: DetailPageLayout },
+    { path: routes.people_details_search, component: PeopleDetails, layout: DetailPageLayout },
+    { path: routes.transactions, component: TransactionHistory, layout: DetailPageLayout },
+    { path: routes.bookingSlice, component: Booking, layout: DetailPageLayout },
 ];
