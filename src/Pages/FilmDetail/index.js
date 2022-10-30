@@ -21,12 +21,15 @@ import { subDate, removeDuplicates } from '~/Utils';
 import CastList from './Component/CastList/castList';
 import VideoList from './Component/VideoList/videoList';
 import FilmSlider from './Component/FilmSlider/filmSlider';
+import SliderCB from './Component/SliderCB/sliderCB';
+import { userSelector } from '~/Redux/selector';
 
 function FilmDetails() {
     const { id } = useParams();
     const [film, setFilm] = useState();
     const [showTimeList, setShowTimeList] = useState([]);
     const [dateArray, setDateArray] = useState([]);
+    const user = useSelector(userSelector);
     useEffect(() => {
         const getMovie = async () => {
             const params = {};
@@ -48,7 +51,19 @@ function FilmDetails() {
         };
 
         fetchShowTimeByFilmId();
-    }, []);
+
+        // const sendDataCF = async () => {
+        //     const _user = user.int_id;
+        //     const _item = id;
+        //     const _rating = 3;
+
+        //     await fetch(`http://127.0.0.1:5000/addDataCF?user=${_user}&item=${_item}&rating=${_rating}`)
+        //         .then(() => {})
+        //         .catch((err) => console.log(err));
+        // };
+
+        // if (user && user.rank === 'Customer') sendDataCF();
+    }, [id]);
 
     useEffect(() => {
         const getDate = async () => {
@@ -132,6 +147,12 @@ function FilmDetails() {
                     <div className="container">
                         <div className="section mb-3">
                             <VideoList id={film.id} category={category.movie} />
+                        </div>
+
+                        <div className="section mb-3">
+                            <div className="section__header mb-2">
+                                <SliderCB currentMovieId={film.id} />
+                            </div>
                         </div>
 
                         <div className="section mb-3">
