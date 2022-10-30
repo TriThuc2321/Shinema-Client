@@ -14,8 +14,8 @@ import { useNavigate } from 'react-router';
 
 import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-
 import { useSelector } from 'react-redux';
+import cfApi from '~/Api/cfApi';
 import apiConfig from '~/Api/apiConfig';
 import tmdbApi, { movieType } from '~/Api/tmdbApi';
 import { userSelector } from '~/Redux/selector';
@@ -27,11 +27,10 @@ function SliderCF() {
     useEffect(() => {
         const getCF = async () => {
             if (user.rank === 'Customer') {
-                await fetch(`http://127.0.0.1:5000/getCF?user=${user.int_id}`)
-                    .then((_res) => _res.json())
+                cfApi
+                    .getByUserId(user.int_id)
                     .then(async (data) => {
                         const listPromise = [];
-                        console.log(data);
                         data.film_id_array.forEach((filmId) => {
                             listPromise.push(tmdbApi.getMovie(filmId));
                         });

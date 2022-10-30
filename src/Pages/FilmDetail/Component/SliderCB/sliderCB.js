@@ -16,6 +16,7 @@ import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import apiConfig from '~/Api/apiConfig';
 import tmdbApi, { movieType } from '~/Api/tmdbApi';
+import cbApi from '~/Api/cbApi';
 
 function SliderCB(props) {
     const [movieItems, setMovieItems] = useState([]);
@@ -28,22 +29,35 @@ function SliderCB(props) {
 
     useEffect(() => {
         const getCB = async () => {
-            await fetch(`http://shinema-py.herokuapp.com/getCB?movieId=${id}`)
-                .then((res) => {
-                    if (res.status === 200) return res.json();
+            // await fetch(`http://shinema-py.herokuapp.com/getCB?movieId=${id}`)
+            //     .then((res) => {
+            //         if (res.status === 200) return res.json();
+            //         setId('19995');
+            //         return null;
+            //     })
+            //     .then(async (data) => {
+            //         if (data) {
+            //             const listPromise = [];
+            //             Object.values(data).forEach((filmId) => {
+            //                 listPromise.push(tmdbApi.getMovie(filmId));
+            //             });
+            //             setMovieItems(await Promise.all(listPromise));
+            //         }
+            //     })
+            //     .catch((err) => console.log(err));
+            await cbApi
+                .getCB(id)
+                .then(async (res) => {
+                    const listPromise = [];
+                    Object.values(res.data).forEach((filmId) => {
+                        listPromise.push(tmdbApi.getMovie(filmId.toString()));
+                    });
+                    setMovieItems(await Promise.all(listPromise));
+                })
+                .catch((err) => {
+                    console.log(err);
                     setId('19995');
-                    return null;
-                })
-                .then(async (data) => {
-                    if (data) {
-                        const listPromise = [];
-                        Object.values(data).forEach((filmId) => {
-                            listPromise.push(tmdbApi.getMovie(filmId));
-                        });
-                        setMovieItems(await Promise.all(listPromise));
-                    }
-                })
-                .catch((err) => console.log(err));
+                });
         };
 
         if (id) getCB();

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable operator-linebreak */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/jsx-equals-spacing */
@@ -23,6 +24,7 @@ import VideoList from './Component/VideoList/videoList';
 import FilmSlider from './Component/FilmSlider/filmSlider';
 import SliderCB from './Component/SliderCB/sliderCB';
 import { userSelector } from '~/Redux/selector';
+import cfApi from '~/Api/cfApi';
 
 function FilmDetails() {
     const { id } = useParams();
@@ -52,17 +54,20 @@ function FilmDetails() {
 
         fetchShowTimeByFilmId();
 
-        // const sendDataCF = async () => {
-        //     const _user = user.int_id;
-        //     const _item = id;
-        //     const _rating = 3;
+        const sendDataCF = async () => {
+            const data = {
+                _user: user.int_id,
+                _item: id,
+                _rating: 3,
+            };
 
-        //     await fetch(`http://127.0.0.1:5000/addDataCF?user=${_user}&item=${_item}&rating=${_rating}`)
-        //         .then(() => {})
-        //         .catch((err) => console.log(err));
-        // };
+            await cfApi
+                .update(data)
+                .then((res) => {})
+                .catch((err) => console.log(err));
+        };
 
-        // if (user && user.rank === 'Customer') sendDataCF();
+        if (user && user.rank === 'Customer') sendDataCF();
     }, [id]);
 
     useEffect(() => {
