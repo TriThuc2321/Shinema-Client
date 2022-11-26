@@ -1,7 +1,7 @@
 const env = 'prod';
 
 const URL = {
-    localDatabase: 'http://localhost:8000/api',
+    localDatabase: 'http://localhost:2321/api',
     localAuthen: 'http://localhost:5500/auth',
     localPy: 'http://127.0.0.1:5000/',
     herokuDatabase: 'https://shinema.herokuapp.com/api',
