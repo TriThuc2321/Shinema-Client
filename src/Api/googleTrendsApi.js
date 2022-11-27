@@ -3,8 +3,8 @@ import ApiDatabase from './ApiDatabase';
 
 const url = 'trends';
 const googleTrendsApi = {
-    getDailyTrends: async () => {
-        const res = await ApiDatabase.get(url + '/daily-trends');
+    getDailyTrends: async (geo) => {
+        const res = await ApiDatabase.get(url + '/daily-trends/' + geo);
         return res;
     },
 };

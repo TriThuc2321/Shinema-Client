@@ -9,6 +9,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { red } from '@mui/material/colors';
 import { AiOutlineUser, AiOutlineMenu } from 'react-icons/ai';
 import { BsBell } from 'react-icons/bs';
+import { BiTrendingUp } from 'react-icons/bi';
 import { GiFilmStrip } from 'react-icons/gi';
 import { IoIosLogOut } from 'react-icons/io';
 import userSlice from '~/Redux/slices/userSlice';
@@ -44,6 +45,10 @@ function NotSignInMenu() {
         <div className={cx('not-signed-in-menu')}>
             <p>
                 <Link to="/corner/movie/popular">FILMDOM</Link>
+            </p>
+
+            <p>
+                <Link to="/trends">TRENDS</Link>
             </p>
 
             <p>
@@ -112,6 +117,13 @@ function SignedInMenu() {
                             <Link to="/corner/movie/popular">FILMDOM</Link>
                         </p>
                         <GiFilmStrip className="menu__item__icon" color={defaultColor} size={23} />
+                    </div>
+
+                    <div className={cx('menu-item')}>
+                        <p>
+                            <Link to="/trends">TRENDS</Link>
+                        </p>
+                        <BiTrendingUp className="menu__item__icon" color={defaultColor} size={23} />
                     </div>
 
                     <div className={cx('menu__line')} />

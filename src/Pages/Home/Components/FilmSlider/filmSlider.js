@@ -60,55 +60,60 @@ function FilmSlider(props) {
 
         getTypes();
 
-        const getTrends = async () => {
-            // eslint-disable-next-line no-unused-vars
-            let keywordsRes = [];
-            await googleTrendsApi
-                .getDailyTrends()
-                .then(async (res) => {
-                    const listPromise = [];
-                    res.data.forEach((trendsWord) => {
-                        listPromise.push(tmdbApi.searchListKeyword(trendsWord));
-                    });
+        // const getTrends = async () => {
+        //     // eslint-disable-next-line no-unused-vars
+        //     let keywordsRes = [];
+        //     await googleTrendsApi
+        //         .getDailyTrends()
+        //         .then(async (res) => {
+        //             const listPromise = [];
+        //             res.data.forEach((trendsWord) => {
+        //                 listPromise.push(tmdbApi.searchListKeyword(trendsWord));
+        //             });
 
-                    const resKeyword = await Promise.all(listPromise);
-                    resKeyword.map((item) => {
-                        if (item.total_results !== 0) {
-                            keywordsRes.push(item.results);
-                        }
-                    });
-                })
-                .catch((err) => console.log(err));
+        //             const resKeyword = await Promise.all(listPromise);
+        //             resKeyword.map((item) => {
+        //                 if (item.total_results !== 0) {
+        //                     keywordsRes.push(item.results);
+        //                 }
+        //             });
+        //         })
+        //         .catch((err) => console.log(err));
 
-            let listKeyword = [];
-            keywordsRes.map((array) => {
-                array.map((item) => listKeyword.push(item));
-            });
+        //     let listKeyword = [];
+        //     keywordsRes.map((array) => {
+        //         array.map((item) => listKeyword.push(item));
+        //     });
 
-            let discoverRes = [];
-            if (listKeyword.length !== 0) {
-                const listPromise = [];
-                listKeyword.map((item) => {
-                    listPromise.push(tmdbApi.discoverWithKeyword(item.id));
-                });
-                discoverRes = await Promise.all(listPromise);
-            }
-            let tmpRes = [];
-            console.log('listKeyword', listKeyword);
-            for (let i = 0; i < listKeyword.length; i++) {
-                const res = {
-                    keyword: listKeyword[i],
-                    movies: discoverRes[i].results,
-                };
+        //     let discoverRes = [];
+        //     let dictionary = [];
+        //     if (listKeyword.length !== 0) {
+        //         const listPromise = [];
+        //         listKeyword.map((item) => {
+        //             listPromise.push(tmdbApi.discoverWithKeyword(item.id));
+        //         });
+        //         discoverRes = await Promise.all(listPromise);
 
-                trendsMovie.push(res);
-            }
+        //         console.log('discoverRes', discoverRes);
 
-            console.log(trendsMovie);
-        };
+        //         console.log('listKeyword', listKeyword);
+        //         for (let i = 0; i < listKeyword.length; i++) {
+        //             const res = {
+        //                 keyword: listKeyword[i],
+        //                 movies: discoverRes[i].results,
+        //             };
+        //             dictionary.push(res);
+        //         }
+        //     }
+        //     setTrendsMovie(dictionary);
+        // };
 
-        getTrends();
+        // getTrends();
     }, [props]);
+
+    useEffect(() => {
+        console.log(trendsMovie);
+    }, [trendsMovie]);
 
     return (
         <div className="typeOfFilm__container" id={typeFilm}>

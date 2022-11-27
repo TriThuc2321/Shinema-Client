@@ -72,9 +72,9 @@ const tmdbApi = {
         const url = '/search/keyword';
         return axiosClient.get(url, { params: { query: keyword } });
     },
-    discoverWithKeyword: (keywordId) => {
+    discoverWithKeyword: (keywordId, regionCode) => {
         const url = '/discover/movie';
-        return axiosClient.get(url, { params: { with_keywords: keywordId } });
+        return axiosClient.get(url, { params: { with_keywords: keywordId, region: regionCode } });
     },
 };
 
