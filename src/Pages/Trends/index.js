@@ -11,8 +11,9 @@ import CountryFilter from './CountryFilter/countryFilter';
 
 function Trends() {
     const [trendsMovie, setTrendsMovie] = useState([]);
-    const [dictionary, setDictionary] = useState([]);
-    const [numberOfKeyword, setNumberOfKeyword] = useState(0);
+    const [numKW, setNumKW] = useState(0);
+    //const [dictionary, setDictionary] = useState([]);
+    let dictionary = [];
     const [selectedCountry, setSelectedCountry] = useState({
         code: 'US',
         label: 'United States',
@@ -58,36 +59,56 @@ function Trends() {
         });
 
         if (listKeyword.length !== 0) {
-            listKeyword.map(async (trendKW) => {
+            setNumKW(listKeyword.length);
+            listKeyword.forEach(async (trendKW) => {
                 let listPromise = [];
-                trendKW.list.map((keyword) => {
+                trendKW.list.forEach((keyword) => {
                     listPromise.push(tmdbApi.discoverWithKeyword(keyword.item.id, selectedCountry.code));
                 });
                 const discoverRes = await Promise.all(listPromise);
-                const obj = {
-                    keyword: trendKW.trend,
-                    movies: discoverRes[0].results,
-                };
-                //setTrendsMovie([...trendsMovie, obj]);
-                setDictionary([
-                    ...dictionary,
+                // dictionary.push({
+                //     keyword: trendKW.trend,
+                //     movies: discoverRes[0].results,
+                // });
+
+                // setDictionary([
+                //     ...dictionary,
+                //     {
+                //         keyword: trendKW.trend,
+                //         movies: discoverRes[0].results,
+                //     },
+                // ]);
+
+                // dictionary.push({
+                //     keyword: trendKW.trend,
+                //     movies: discoverRes[0].results,
+                // });
+
+                setTrendsMovie((currentState) => [
+                    ...currentState,
                     {
                         keyword: trendKW.trend,
                         movies: discoverRes[0].results,
                     },
                 ]);
-                // dictionary.push({
-                //     keyword: trendKW.trend,
-                //     movies: discoverRes[0].results,
-                // });
             });
-            setNumberOfKeyword(listKeyword.length);
         }
     };
+
     useEffect(() => {
         setTrendsMovie([]);
         getTrends(selectedCountry);
     }, []);
+
+    // useEffect(() => {
+    //     console.log('numKW', numKW);
+    //     console.log('len', dictionary.length);
+    //     if (numKW === dictionary.length) {
+    //         console.log('aaaaaaa');
+    //         setTrendsMovie([]);
+    //         getTrends(selectedCountry);
+    //     }
+    // }, [dictionary]);
 
     useEffect(() => {
         setTrendsMovie([]);
@@ -95,16 +116,7 @@ function Trends() {
     }, [selectedCountry]);
 
     useEffect(() => {
-        console.log('numberOfKeyword', numberOfKeyword);
-        console.log('dictionary length', dictionary.length);
-        if (dictionary.length === numberOfKeyword) {
-            setTrendsMovie(dictionary);
-        }
-    }, [dictionary, numberOfKeyword]);
-
-    useEffect(() => {
         if (trendsMovie.length !== 0) {
-            console.log(trendsMovie.length, trendsMovie);
         }
     }, [trendsMovie]);
 

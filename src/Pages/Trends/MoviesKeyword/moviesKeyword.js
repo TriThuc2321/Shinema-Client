@@ -8,7 +8,7 @@ import apiConfig from '~/Api/apiConfig';
 function MoviesKeyword({ keyword, movies }) {
     const [movieItems] = useState(movies);
     return (
-        <div className="container">
+        <div className="moviekeyword-container">
             <div className="film__container">
                 <div className="film__container__header">
                     <h3 className="film__container__header__title">{keyword}</h3>

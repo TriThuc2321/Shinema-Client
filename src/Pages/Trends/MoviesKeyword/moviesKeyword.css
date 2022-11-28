@@ -1,4 +1,4 @@
-.container {
+.moviekeyword-container {
     display: block;
     padding-left: 2rem;
     padding-right: 2rem;
@@ -113,7 +113,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
     grid-gap: 20px;
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 .film__container__content__viewMore {
