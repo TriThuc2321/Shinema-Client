@@ -1,3 +1,4 @@
+/* eslint-disable prefer-const */
 import axiosClient from './axiosClient';
 
 export const category = {
@@ -62,6 +63,18 @@ const tmdbApi = {
     getMovieCredits: (personId) => {
         const url = `/person/${personId}/movie_credits`;
         return axiosClient.get(url, { params: {} });
+    },
+    getMovie: (movieId) => {
+        const url = `/movie/${movieId}`;
+        return axiosClient.get(url, { params: {} });
+    },
+    searchListKeyword: (keyword) => {
+        const url = '/search/keyword';
+        return axiosClient.get(url, { params: { query: keyword } });
+    },
+    discoverWithKeyword: (keywordId, regionCode) => {
+        const url = '/discover/movie';
+        return axiosClient.get(url, { params: { with_keywords: keywordId, region: regionCode } });
     },
 };
 

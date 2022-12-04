@@ -9,6 +9,7 @@ import {
     Booking,
     Manager,
     Review,
+    Trends,
 } from '~/Pages';
 import { DetailPageLayout, ManagerLayout } from '~/Layouts';
 import routes from '~/Configs/routes';
@@ -24,6 +25,7 @@ export const guest = [
     { path: routes.people_details, component: PeopleDetails, layout: DetailPageLayout },
     { path: routes.film_details, component: FilmDetails, layout: DetailPageLayout },
     { path: routes.people_details_search, component: PeopleDetails, layout: DetailPageLayout },
+    { path: routes.trends, component: Trends },
 ];
 
 export const admin = [
@@ -57,4 +59,5 @@ export const customer = [
     { path: routes.people_details_search, component: PeopleDetails, layout: DetailPageLayout },
     { path: routes.transactions, component: TransactionHistory, layout: DetailPageLayout },
     { path: routes.bookingSlice, component: Booking, layout: DetailPageLayout },
+    { path: routes.trends, component: Trends },
 ];

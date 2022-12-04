@@ -11,3 +11,4 @@ const URL = {
 
 export const getUrlDatabase = () => (env === 'prod' ? URL.renderDatabase : URL.localDatabase);
 export const getUrlAuthen = () => (env === 'prod' ? URL.renderAuthen : URL.localAuthen);
+export const getUrlPy = () => (env === 'prod' ? URL.renderPy : URL.localPy);

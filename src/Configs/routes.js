@@ -13,6 +13,7 @@ const routes = {
     film_details: '/filmDetails/:id',
     transactions: '/transactions',
     booking: '/booking/:id',
+    trends: '/trends',
 };
 
 export default routes;

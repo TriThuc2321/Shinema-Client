@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useState, useEffect } from 'react';
 import './filmSlider.css';
 
@@ -14,6 +15,7 @@ import Button from '@mui/material/Button';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import apiConfig from '~/Api/apiConfig';
 import tmdbApi, { movieType } from '~/Api/tmdbApi';
+import googleTrendsApi from '~/Api/googleTrendsApi';
 
 const NUM_FILM_LOADING = 8;
 
@@ -21,6 +23,7 @@ function FilmSlider(props) {
     const { id, typeFilm, category } = props;
     const [movieItems, setMovieItems] = useState([]);
     const [movieTypes, setMovieTypes] = useState('');
+    const [trendsMovie, setTrendsMovie] = useState([]);
 
     const [viewMoreVisible, setViewMoreVisible] = useState(true);
 
@@ -56,7 +59,61 @@ function FilmSlider(props) {
         };
 
         getTypes();
+
+        // const getTrends = async () => {
+        //     // eslint-disable-next-line no-unused-vars
+        //     let keywordsRes = [];
+        //     await googleTrendsApi
+        //         .getDailyTrends()
+        //         .then(async (res) => {
+        //             const listPromise = [];
+        //             res.data.forEach((trendsWord) => {
+        //                 listPromise.push(tmdbApi.searchListKeyword(trendsWord));
+        //             });
+
+        //             const resKeyword = await Promise.all(listPromise);
+        //             resKeyword.map((item) => {
+        //                 if (item.total_results !== 0) {
+        //                     keywordsRes.push(item.results);
+        //                 }
+        //             });
+        //         })
+        //         .catch((err) => console.log(err));
+
+        //     let listKeyword = [];
+        //     keywordsRes.map((array) => {
+        //         array.map((item) => listKeyword.push(item));
+        //     });
+
+        //     let discoverRes = [];
+        //     let dictionary = [];
+        //     if (listKeyword.length !== 0) {
+        //         const listPromise = [];
+        //         listKeyword.map((item) => {
+        //             listPromise.push(tmdbApi.discoverWithKeyword(item.id));
+        //         });
+        //         discoverRes = await Promise.all(listPromise);
+
+        //         console.log('discoverRes', discoverRes);
+
+        //         console.log('listKeyword', listKeyword);
+        //         for (let i = 0; i < listKeyword.length; i++) {
+        //             const res = {
+        //                 keyword: listKeyword[i],
+        //                 movies: discoverRes[i].results,
+        //             };
+        //             dictionary.push(res);
+        //         }
+        //     }
+        //     setTrendsMovie(dictionary);
+        // };
+
+        // getTrends();
     }, [props]);
+
+    useEffect(() => {
+        console.log(trendsMovie);
+    }, [trendsMovie]);
 
     return (
         <div className="typeOfFilm__container" id={typeFilm}>

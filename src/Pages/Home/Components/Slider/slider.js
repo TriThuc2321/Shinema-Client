@@ -23,7 +23,6 @@ function Slider() {
             try {
                 const response = await tmdbApi.getMoviesList(movieType.now_playing, { params });
                 setMovieItems(response.results.slice(4, 9));
-                console.log(response.results);
             } catch {
                 console.log('error');
             }
