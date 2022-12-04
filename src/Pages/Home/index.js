@@ -1,13 +1,11 @@
-/* eslint-disable no-unused-vars */
 import classNames from 'classnames/bind';
 import { Helmet } from 'react-helmet';
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import styles from './Home.module.scss';
 import Slider from './Components/Slider/slider';
 import FilmSlider from './Components/FilmSlider/filmSlider';
 import SliderCF from './Components/SliderCF/sliderCF';
-import tmdbApi, { movieType, category } from '~/Api/tmdbApi';
+import { movieType, category } from '~/Api/tmdbApi';
 import Chatbot from '~/Components/Chatbot';
 import { userSelector } from '~/Redux/selector';
 

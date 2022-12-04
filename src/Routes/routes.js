@@ -41,7 +41,7 @@ export const staff = [
 ];
 
 export const censor = [
-    { path: routes.home, component: Review, layout: null },
+    { path: routes.home, component: Review, layout: ManagerLayout },
     { path: routes.login, component: Login, layout: null },
     { path: routes.register, component: Register, layout: null },
 ];

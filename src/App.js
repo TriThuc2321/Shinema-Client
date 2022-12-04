@@ -6,10 +6,11 @@ import userSlice from '~/Redux/slices/userSlice';
 import { checkLogged } from '~/Utils/auth';
 import getRoutes from '~/Routes';
 import { DefaultLayout } from './Layouts';
+import Loading from './Components/Loading';
 
 function App() {
     const dispatch = useDispatch();
-    const [routes, setRoutes] = useState([]);
+    const [routes, setRoutes] = useState();
     const user = useSelector((state) => state.users);
     useEffect(() => {
         const _checkLogged = async () => {
@@ -30,7 +31,7 @@ function App() {
 
     return (
         <Routes>
-            {routes &&
+            {routes ? (
                 routes.map((route) => {
                     const Page = route.component;
                     let Layout = DefaultLayout;
@@ -52,7 +53,10 @@ function App() {
                             }
                         />
                     );
-                })}
+                })
+            ) : (
+                <Route path="/" element={<Loading />} />
+            )}
         </Routes>
     );
 }
