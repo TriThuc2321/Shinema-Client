@@ -1,12 +1,14 @@
 const styles = {
     container: {
         backgroundColor: '#fff',
-        position: 'absolute',
-        left: 200,
-        right: 200,
+        position: 'relative',
+        marginLeft: 200,
+        marginRight: 200,
+        marginTop: 30,
+        marginBottom: 30,
         borderRadius: 10,
         padding: 30,
-        zIndex: 1,
+        zIndex: 2,
     },
 
     page: {

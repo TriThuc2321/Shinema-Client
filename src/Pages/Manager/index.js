@@ -33,7 +33,6 @@ function Manager() {
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
-        console.log(newValue);
         // if (newValue === 0) {
         //     navigate('/manager/showtime');
         // } else if (newValue === 1) {

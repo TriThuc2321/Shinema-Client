@@ -1,4 +1,4 @@
-/* eslint-disable import/no-cycle */
+/* eslint-disable */
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 
@@ -13,10 +13,10 @@ export function StaffManager() {
     return (
         <div>
             <Routes>
-                <Route path="manager/staff/" element={<DisplayStaff />} />
                 <Route path="manager/staff/add" element={<NewStaff />} />
                 <Route path="manager/staff/edit/:id" element={<EditStaff />} />
             </Routes>
+            <DisplayStaff />
         </div>
     );
 }

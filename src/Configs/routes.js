@@ -14,6 +14,8 @@ const routes = {
     transactions: '/transactions',
     booking: '/booking/:id',
     trends: '/trends',
+    newStaff: '/manager/staff/add',
+    editStaff: 'manager/staff/edit/:id',
 };
 
 export default routes;
