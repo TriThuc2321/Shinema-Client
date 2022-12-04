@@ -111,18 +111,14 @@ function FilmSlider(props) {
         // getTrends();
     }, [props]);
 
-    useEffect(() => {
-        console.log(trendsMovie);
-    }, [trendsMovie]);
-
     return (
         <div className="typeOfFilm__container" id={typeFilm}>
             <div className="typeOfFilm__container__header">
                 <h3 className="typeOfFilm__container__header__title">{movieTypes}</h3>
+                {viewMoreVisible && <ViewMoreButton typeFilm={typeFilm} />}
             </div>
 
             <div className="typeOfFilm__container__content">
-                {viewMoreVisible && <ViewMoreButton typeFilm={typeFilm} />}
                 <Swiper
                     className="typeOfFilm__container__content__swiper"
                     slidesPerView={5}
