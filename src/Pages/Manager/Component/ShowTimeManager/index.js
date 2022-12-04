@@ -148,7 +148,7 @@ function ShowTimeManager() {
                 </div>
 
                 {data ? (
-                    data.map((item) => <ShowTimeManagerItem key={item.id} value={item} openEdit={openEdit} />)
+                    data.map((item) => <ShowTimeManagerItem key={item.id} item={item} openEdit={openEdit} />)
                 ) : (
                     <Loading />
                 )}
