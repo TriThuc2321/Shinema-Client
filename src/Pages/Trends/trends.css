@@ -5,3 +5,8 @@
 .trends-container{
     margin-top: 2rem;
 }
+.no-data{
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
