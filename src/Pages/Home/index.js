@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import classNames from 'classnames/bind';
-import { useEffect } from 'react';
 import { useSelector } from 'react-redux';
+import { Helmet } from 'react-helmet';
 import styles from './Home.module.scss';
 import Slider from './Components/Slider/slider';
 import FilmSlider from './Components/FilmSlider/filmSlider';
@@ -16,6 +16,10 @@ function Home() {
     const user = useSelector(userSelector);
     return (
         <div className={cx('container')}>
+            <Helmet>
+                <title>Shemina</title>
+            </Helmet>
+
             <Chatbot />
             <Slider />
             {user && <SliderCF />}
