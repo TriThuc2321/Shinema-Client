@@ -3,7 +3,7 @@ const env = 'prod';
 const URL = {
     localDatabase: 'http://localhost:8000/api',
     localAuthen: 'http://localhost:5500/auth',
-    localPy: 'http://127.0.0.1:5000/',
+    localPy: 'http://localhost:8080/',
     renderDatabase: 'https://shinema.onrender.com/api',
     renderAuthen: 'https://shinema-authen.onrender.com/auth',
     renderPy: 'https://shinema-py.onrender.com',
