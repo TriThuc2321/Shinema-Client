@@ -40,9 +40,12 @@ function Trends() {
     }, []);
 
     useEffect(() => {
-        setIsLoading(true);
-        setTrendsMovie([]);
-        getTrends(selectedCountry);
+        console.log(selectedCountry);
+        if (selectedCountry && selectedCountry.label !== '') {
+            setIsLoading(true);
+            setTrendsMovie([]);
+            getTrends(selectedCountry);
+        }
     }, [selectedCountry]);
 
     useEffect(() => {
@@ -59,7 +62,9 @@ function Trends() {
                 <CountryFilter selectedCountry={selectedCountry} setMethod={setSelectedCountry} />
             </div>
 
-            <div class="trends-title">Trends in {selectedCountry.label}: </div>
+            {selectedCountry !== null && selectedCountry !== '' && (
+                <div class="trends-title">Trends in {selectedCountry.label}: </div>
+            )}
 
             {isLoading && <Loading />}
             {!isLoading &&
