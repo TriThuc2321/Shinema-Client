@@ -18,7 +18,7 @@ import EditStaff from '~/Pages/Manager/Component/StaffManager/editStaff';
 import routes from '~/Configs/routes';
 
 export const guest = [
-    { path: routes.home, component: Home },
+    { path: routes.home, component: Home, layout: DetailPageLayout },
     { path: routes.login, component: Login, layout: null },
     { path: routes.register, component: Register, layout: null },
     { path: routes.corner.movies_search, component: Corner, layout: DetailPageLayout },
