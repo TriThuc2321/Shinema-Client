@@ -66,6 +66,12 @@ function ChatBot() {
 }
 
 function FormChat({ openFormHandle }) {
+    const TYPE_PARAM_KEY = {
+        FILM_NAME: 'film_name',
+        PERSON_NAME: 'person_name',
+        MESSAGE: 'msg',
+    };
+
     let userName = useSelector((state) => state.users.instance.name);
     if (userName == null) {
         userName = ' ';
@@ -83,6 +89,7 @@ function FormChat({ openFormHandle }) {
 
     const [loading, setLoading] = useState(true);
     const [messages, setMessages] = useState([]);
+    const [paramKey, setParamKey] = useState(TYPE_PARAM_KEY.MESSAGE);
 
     useEffect(async () => {
         await FakeApi();
@@ -105,21 +112,26 @@ function FormChat({ openFormHandle }) {
         const messageTemp = [...messages, messageObj];
 
         setLoading(true);
-        ChatbotApi.send(text)
+        ChatbotApi.send(paramKey, text)
             .then((res) => {
                 if (res.status === 200) {
                     let botMessageObj = {};
                     const { tag, message } = res.data;
                     let sendMessage = '';
-
-                    if (tag === 'detail_film') {
-                        const movieName = 'hary';
-                        navigate(`/corner/movie/search/${movieName}`);
-                        sendMessage = `You will be automatically redirected to the search page for ${movieName} movie`;
-                    } else if (tag === 'Search actor') {
-                        const actorName = 'thuc';
-                        navigate(`/corner/people/search/${actorName}`);
-                        sendMessage = `You will be automatically redirected to the search page for ${actorName}`;
+                    if (paramKey === TYPE_PARAM_KEY.FILM_NAME) {
+                        navigate(`/corner/movie/search/${message}`);
+                        sendMessage = `You will be automatically redirected to the search page for the movie name contains keyword ${message}.`;
+                        setParamKey(TYPE_PARAM_KEY.MESSAGE);
+                    } else if (paramKey === TYPE_PARAM_KEY.PERSON_NAME) {
+                        navigate(`/corner/people/search/${message}`);
+                        sendMessage = `You will be automatically redirected to the search page for the person whose name contains keword ${message}.`;
+                        setParamKey(TYPE_PARAM_KEY.MESSAGE);
+                    } else if (tag === 'detail_film') {
+                        setParamKey(TYPE_PARAM_KEY.FILM_NAME);
+                        sendMessage = message;
+                    } else if (tag === 'detail_actor') {
+                        setParamKey(TYPE_PARAM_KEY.PERSON_NAME);
+                        sendMessage = message;
                     } else if (tag === 'popular' || tag === 'upcoming' || tag === 'top_rated') {
                         navigate(`/corner/movie/${tag}`);
                         sendMessage = message;

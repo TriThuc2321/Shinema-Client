@@ -1,8 +1,8 @@
 import ApiPy from './pyConfig';
 
 const ChatbotApi = {
-    send: async (message) => {
-        const res = await ApiPy.get(`/getChatbot?msg=${message}`);
+    send: async (paramKey, message) => {
+        const res = await ApiPy.get(`/getChatbot?${paramKey}=${message}`);
         return res;
     },
 };
