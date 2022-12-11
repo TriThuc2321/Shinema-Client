@@ -6,7 +6,6 @@ import Slider from './Components/Slider/slider';
 import FilmSlider from './Components/FilmSlider/filmSlider';
 import SliderCF from './Components/SliderCF/sliderCF';
 import { movieType, category } from '~/Api/tmdbApi';
-import Chatbot from '~/Components/Chatbot';
 import { userSelector } from '~/Redux/selector';
 
 const cx = classNames.bind(styles);
@@ -19,7 +18,6 @@ function Home() {
                 <title>Shemina</title>
             </Helmet>
 
-            <Chatbot />
             <Slider />
             {user && <SliderCF />}
             <FilmSlider category={category.movie} typeFilm={movieType.popular} />

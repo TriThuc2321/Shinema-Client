@@ -28,14 +28,14 @@ export const guest = [
     { path: routes.people_details, component: PeopleDetails, layout: DetailPageLayout },
     { path: routes.film_details, component: FilmDetails, layout: DetailPageLayout },
     { path: routes.people_details_search, component: PeopleDetails, layout: DetailPageLayout },
-    { path: routes.trends, component: Trends },
+    { path: routes.trends, component: Trends, layout: DetailPageLayout },
 ];
 
 export const admin = [
     { path: routes.home, component: Manager, layout: ManagerLayout },
     { path: routes.login, component: Login, layout: null },
     { path: routes.register, component: Register, layout: null },
-    { path: routes.newStaff, component: NewStaff, layout: DetailPageLayout },
+    { path: routes.newStaff, component: NewStaff, layout: ManagerLayout },
     { path: routes.editStaff, component: EditStaff, layout: null },
 ];
 
@@ -54,7 +54,7 @@ export const censor = [
 ];
 
 export const customer = [
-    { path: routes.home, component: Home },
+    { path: routes.home, component: Home, layout: DetailPageLayout },
     { path: routes.login, component: Login, layout: null },
     { path: routes.register, component: Register, layout: null },
     { path: routes.corner.movies_search, component: Corner, layout: DetailPageLayout },
@@ -66,6 +66,6 @@ export const customer = [
     { path: routes.people_details_search, component: PeopleDetails, layout: DetailPageLayout },
     { path: routes.transactions, component: TransactionHistory, layout: DetailPageLayout },
     { path: routes.bookingSlice, component: Booking, layout: DetailPageLayout },
-    { path: routes.trends, component: Trends },
-    { path: routes.profile, component: Profile },
+    { path: routes.trends, component: Trends, layout: DetailPageLayout },
+    { path: routes.profile, component: Profile, layout: DetailPageLayout },
 ];

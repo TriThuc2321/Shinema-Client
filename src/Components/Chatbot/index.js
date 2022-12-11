@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // import React, { Component } from 'react'
 
 // export class ChatBot extends Component {
@@ -41,9 +42,10 @@ import SendIcon from '@mui/icons-material/Send';
 import { useSelector } from 'react-redux';
 import format from 'date-fns/format';
 import TypingAnim from '~/Components/TypingAnim';
-import botAvatar from '~/Assets/bot_avatar.png';
+import botAvatar from '~/Assets/logo_png.png';
 import ChatbotApi from '~/Api/chatbotApi';
 import Loading from '~/Components/Loading';
+import { FakeApi } from '~/Utils/mock';
 
 function ChatBot() {
     const [isOpen, setIsOpen] = useState(false);
@@ -55,7 +57,7 @@ function ChatBot() {
             {isOpen ? (
                 <FormChat openFormHandle={openFormHandle} />
             ) : (
-                <Fab color="primary" aria-label="add" onClick={openFormHandle}>
+                <Fab sx={{ color: '#ff4f28' }} aria-label="add" onClick={openFormHandle}>
                     <ChatIcon />
                 </Fab>
             )}
@@ -71,16 +73,22 @@ function FormChat({ openFormHandle }) {
         userName += ' ';
     }
 
-    const [loading, setLoading] = useState(false);
     const today = format(new Date(), 'PP p');
-    const [messages, setMessages] = useState([
-        {
-            type: 'bot',
-            message: `Hi, ${userName}nice to meet you. I am Alex and I am a virtual assistant of Shenima to help you with your support needs. What are your looking for?`,
-            listBtn: [],
-            dateTime: today,
-        },
-    ]);
+    const initMessage = {
+        type: 'bot',
+        message: `Hi, ${userName}nice to meet you. I am Alex and I am a virtual assistant of Shenima to help you with your support needs. What are your looking for?`,
+        listBtn: [],
+        dateTime: today,
+    };
+
+    const [loading, setLoading] = useState(true);
+    const [messages, setMessages] = useState([]);
+
+    useEffect(async () => {
+        await FakeApi();
+        setMessages([initMessage]);
+        setLoading(false);
+    }, []);
 
     const navigate = useNavigate();
     const sendMessageHandle = (text) => {
@@ -96,48 +104,27 @@ function FormChat({ openFormHandle }) {
         setMessages([...messages, messageObj]);
         const messageTemp = [...messages, messageObj];
 
-        const sendObj = {
-            text,
-        };
         setLoading(true);
-        ChatbotApi.send(sendObj)
+        ChatbotApi.send(text)
             .then((res) => {
                 if (res.status === 200) {
                     let botMessageObj = {};
-                    const respondMessage = res.data.fulfillmentText;
+                    const { tag, message } = res.data;
                     let sendMessage = '';
 
-                    if (respondMessage === 'Search movie') {
-                        const movieName = res.data.parameters.fields.movieName.stringValue;
+                    if (tag === 'detail_film') {
+                        const movieName = 'hary';
                         navigate(`/corner/movie/search/${movieName}`);
                         sendMessage = `You will be automatically redirected to the search page for ${movieName} movie`;
-                    } else if (respondMessage === 'Search actor') {
-                        const actorName = res.data.parameters.fields.actorName.stringValue;
+                    } else if (tag === 'Search actor') {
+                        const actorName = 'thuc';
                         navigate(`/corner/people/search/${actorName}`);
                         sendMessage = `You will be automatically redirected to the search page for ${actorName}`;
-                    } else if (
-                        respondMessage === 'popular' ||
-                        respondMessage === 'upcoming' ||
-                        respondMessage === 'top_rated'
-                    ) {
-                        sendMessage = 'We are navigating to ';
-                        switch (respondMessage) {
-                            case 'popular':
-                                sendMessage += 'Popular movies page.';
-                                break;
-                            case 'upcoming':
-                                sendMessage += 'Upcoming movies page.';
-                                break;
-                            case 'top_rated':
-                                sendMessage += 'Top-rated movies page.';
-                                break;
-                            default:
-                                sendMessage += 'Popular movies page.';
-                        }
-
-                        navigate(`/corner/movie/${respondMessage}`);
+                    } else if (tag === 'popular' || tag === 'upcoming' || tag === 'top_rated') {
+                        navigate(`/corner/movie/${tag}`);
+                        sendMessage = message;
                     } else {
-                        sendMessage = respondMessage;
+                        sendMessage = message;
                     }
 
                     const curTime = new Date();
@@ -171,11 +158,11 @@ function Header({ openFormHandle }) {
                 <Avatar alt="Remy Sharp" src={botAvatar} />
                 <div>
                     <p>Alex bot</p>
-                    <p style={{ fontSize: 13 }}>Online</p>
+                    <p style={{ fontSize: 13, marginTop: 2 }}>Online</p>
                 </div>
             </div>
 
-            <IconButton onClick={openFormHandle}>
+            <IconButton onClick={openFormHandle} sx={{ color: '#fff' }}>
                 <CloseRoundedIcon />
             </IconButton>
         </div>
@@ -259,7 +246,7 @@ function SendBox({ sendMessageHandle }) {
                                 setMessage('');
                             }}
                             edge="end"
-                            sx={{ color: '#42a5f5', marginRight: 0.3 }}
+                            sx={{ color: '#ff4f28', marginRight: 0.3 }}
                         >
                             <SendIcon />
                         </IconButton>

@@ -16,7 +16,7 @@
 .form__header {
     height: 10%;
     width: 100%;
-    background-color: #42a5f5;
+    background-color: #353535;
     border-radius: 20px 20px 0px 0px;
     padding-left: 10px;
     padding-right: 5px;
@@ -27,6 +27,7 @@
 
 .form__header__bot {
     display: flex;
+    align-items: center;
 }
 
 .form__header__bot p {
@@ -54,12 +55,15 @@
 }
 
 .form__messList__item__message {
-    background-color: #007ce2;
+    background-color: #ff4f28;
+    margin-bottom: 5px;
+    margin-top: 5px;
     color: #fff;
     padding: 6px 13px;
     border-radius: 10px;
     font-size: 15px;
-    max-width: 200px;
+    max-width: 250px;
+    letter-spacing: 1px;
 }
 
 .form__messList__item__text--right {
@@ -68,7 +72,7 @@
 }
 
 .form__messList__item__message--right {
-    background-color: #b2dcff;
+    background-color: #ffbeb8;
     color: #272727;
 }
 

@@ -37,5 +37,6 @@ module.exports = {
         'jsx-a11y/label-has-associated-control': 0,
         'operator-linebreak': 0,
         'react/no-array-index-key': 0,
+        'implicit-arrow-linebreak': 0,
     },
 };
