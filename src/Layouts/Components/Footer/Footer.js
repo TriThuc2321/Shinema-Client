@@ -7,14 +7,12 @@ import { Link } from 'react-router-dom';
 import { FaTelegramPlane } from 'react-icons/fa';
 import { AiOutlineMail } from 'react-icons/ai';
 import { BsTelephoneFill } from 'react-icons/bs';
-import Chatbot from '~/Components/Chatbot';
 import Logo from '../../../Assets/logo.png';
 
 function Footer() {
     const defaultColor = '#fff';
     return (
         <div className="footer-container">
-            <Chatbot />
             <div className="footer-container__introduce">
                 <img src={Logo} alt="Shinema" className="footer-container__introduce__logo" />
                 <div className="footer-container__introduce__name">Shinema</div>
