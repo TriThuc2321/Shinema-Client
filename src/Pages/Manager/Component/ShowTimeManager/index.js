@@ -107,7 +107,7 @@ function ShowTimeManager() {
                 setShowEditForm(false);
             }}
         >
-            <Box sx={{ width: '100%', height: '100%', position: 'relative' }}>
+            <Box sx={{ width: '100%', minHeight: '75vh', position: 'relative' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'self-start' }}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <DatePicker

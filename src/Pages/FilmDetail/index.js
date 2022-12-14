@@ -17,6 +17,7 @@ import tmdbApi, { category } from '~/Api/tmdbApi';
 
 import apiConfig from '~/Api/apiConfig';
 import ShowTimeApi from '~/Api/showTimeApi';
+import ReportAnalysisApi from '~/Api/reportAnalysis';
 import { subDate, removeDuplicates } from '~/Utils';
 
 import CastList from './Component/CastList/castList';
@@ -39,6 +40,11 @@ function FilmDetails() {
             try {
                 const response = await tmdbApi.detail(category.movie, id, { params });
                 setFilm(response);
+                const report = {
+                    title: response.title,
+                    _filmId: response.id,
+                };
+                ReportAnalysisApi.report(report);
             } catch (err) {
                 console.log(err);
             }

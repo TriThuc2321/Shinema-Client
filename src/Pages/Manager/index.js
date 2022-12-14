@@ -3,7 +3,8 @@
 
 import { useSelector } from 'react-redux';
 
-import * as React from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
@@ -15,13 +16,14 @@ import { red } from '@mui/material/colors';
 
 import ShowTimeManager from './Component/ShowTimeManager';
 import TheaterManager from './Component/TheaterManager';
-import Statistics from './Component/Statistics';
+import ReportAnalysis from './Component/ReportAnalysis';
 import { StaffManager } from './Component/StaffManager';
 import Censor from './Component/Censor';
 import { userSelector } from '~/Redux/selector';
 
 function Manager() {
     const user = useSelector(userSelector);
+    const navigate = useNavigate();
 
     const tabTheme = createTheme({
         palette: {
@@ -29,33 +31,33 @@ function Manager() {
         },
     });
 
-    const [value, setValue] = React.useState(0);
+    const [value, setValue] = useState(0);
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
-        // if (newValue === 0) {
-        //     navigate('/manager/showtime');
-        // } else if (newValue === 1) {
-        //     navigate('/manage=r/statistic');
-        // } else if (newValue === 2) {
-        //     navigate('/manager/theater');
-        // } else if (newValue === 3) {
-        //     navigate('/manager/staff');
-        // }
+        if (newValue === 0) {
+            navigate('/manager/showtime');
+        } else if (newValue === 1) {
+            navigate('/manager/statistic');
+        } else if (newValue === 2) {
+            navigate('/manager/theater');
+        } else if (newValue === 3) {
+            navigate('/manager/staff');
+        }
     };
 
-    // useEffect(() => {
-    //     const path = window.location.pathname;
+    useEffect(() => {
+        const path = window.location.pathname;
 
-    //     if (path.includes('manager/statistic')) {
-    //         setValue(1);
-    //     } else if (path.includes('manager/theater')) {
-    //         setValue(2);
-    //     }
-    //     if (path.includes('manager/staff')) {
-    //         setValue(3);
-    //     }
-    // }, []);
+        if (path.includes('manager/statistic')) {
+            setValue(1);
+        } else if (path.includes('manager/theater')) {
+            setValue(2);
+        }
+        if (path.includes('manager/staff')) {
+            setValue(3);
+        }
+    }, []);
 
     return (
         <div>
@@ -67,7 +69,7 @@ function Manager() {
                         <Box sx={{ borderBottom: 1, borderColor: 'divider', marginTop: 5, marginLeft: 5 }}>
                             <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                                 <Tab label="Show time" {...a11yProps(0)} sx={{ color: '#fff' }} />
-                                <Tab label="Statistic" {...a11yProps(1)} sx={{ color: '#fff' }} />
+                                <Tab label="Report analysis" {...a11yProps(1)} sx={{ color: '#fff' }} />
                                 <Tab label="Theater" {...a11yProps(2)} sx={{ color: '#fff' }} />
                                 <Tab label="Staff" {...a11yProps(3)} sx={{ color: '#fff' }} />
                             </Tabs>
@@ -77,7 +79,7 @@ function Manager() {
                             <ShowTimeManager />
                         </TabPanel>
                         <TabPanel value={value} index={1}>
-                            <Statistics />
+                            <ReportAnalysis />
                         </TabPanel>
                         <TabPanel value={value} index={2}>
                             <TheaterManager />

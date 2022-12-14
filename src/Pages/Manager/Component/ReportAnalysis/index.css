@@ -1,0 +1,15 @@
+.report-analysis__container {
+    width: 100%;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.filter {
+    display: flex;
+}
+
+.chart {
+    width: 40%;
+}
