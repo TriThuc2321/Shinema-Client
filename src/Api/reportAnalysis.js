@@ -11,6 +11,7 @@ const ReportAnalysisApi = {
         if (page) {
             url += `?page=${page}`;
         }
+
         const res = await ApiDatabase.get(url);
         return res;
     },
@@ -20,6 +21,7 @@ const ReportAnalysisApi = {
         if (page) {
             url += `?page=${page}`;
         }
+
         const res = await ApiDatabase.get(url);
         return res;
     },

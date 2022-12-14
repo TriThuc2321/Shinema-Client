@@ -8,6 +8,8 @@
 
 .filter {
     display: flex;
+    align-items: flex-start;
+    height: fit-content;
 }
 
 .chart {
