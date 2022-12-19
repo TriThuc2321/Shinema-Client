@@ -1,4 +1,4 @@
-const env = 'dev';
+const env = 'prod';
 
 const URL = {
     localDatabase: 'http://localhost:8000/api',
