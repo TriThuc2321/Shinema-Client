@@ -169,6 +169,16 @@ function SlideItem(props) {
     }, []);
 
     const background = apiConfig.originalImage(item.poster_path ? item.poster_path : item.backdrop_path);
+
+    useEffect(() => {
+        const report = {
+            title: item.title,
+            _filmId: item.id,
+            name: 'Display on search page',
+        };
+        ReportAnalysisApi.report(report);
+    }, []);
+
     // const dispatch = useDispatch();
     // const data = useSelector(movieSelector)
     const navigate = useNavigate();

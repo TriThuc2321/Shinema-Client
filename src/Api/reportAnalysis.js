@@ -1,3 +1,4 @@
+import queryString from 'query-string';
 import ApiDatabase from './ApiDatabase';
 
 const ReportAnalysisApi = {
@@ -6,11 +7,9 @@ const ReportAnalysisApi = {
         return res;
     },
 
-    getOrderByDate: async (page) => {
-        let url = '/reportAnalysis/orderByDate';
-        if (page) {
-            url += `?page=${page}`;
-        }
+    getByFilter: async (params) => {
+        const query = queryString.stringify(params);
+        const url = `/reportAnalysis/getByFilter?${query}`;
 
         const res = await ApiDatabase.get(url);
         return res;

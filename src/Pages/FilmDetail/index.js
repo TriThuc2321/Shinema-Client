@@ -43,6 +43,7 @@ function FilmDetails() {
                 const report = {
                     title: response.title,
                     _filmId: response.id,
+                    name: 'Detail page',
                 };
                 ReportAnalysisApi.report(report);
             } catch (err) {
