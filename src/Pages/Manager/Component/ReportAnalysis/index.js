@@ -35,6 +35,7 @@ function ReportAnalysis() {
         { label: 'PolarArea', id: 'polarArea' },
     ];
     const orderBys = ['Date', 'Top access'];
+    const names = ['Detail page', 'Display on search page'];
 
     const [report, setReport] = useState();
     const [chartData, setChartData] = useState();
@@ -42,15 +43,18 @@ function ReportAnalysis() {
         chartType: chartTypes[0],
         orderBy: orderBys[0],
         page: 1,
+        name: names[0],
     });
 
     const getData = async () => {
         let res = '';
-        if (filter.orderBy === 'Date') {
-            res = await ReportAnalysisApi.getOrderByDate(filter.page);
-        } else {
-            res = await ReportAnalysisApi.getOrderByCount(filter.page);
-        }
+        const params = {
+            page: filter.page,
+            orderBy: filter.orderBy,
+            name: filter.name,
+        };
+        res = await ReportAnalysisApi.getByFilter(params);
+
         const { data } = res;
         setReport(data);
         const chartData = {
@@ -71,7 +75,6 @@ function ReportAnalysis() {
 
     useEffect(() => {
         getData();
-        console.log(filter);
     }, [filter]);
 
     const increase = () => {
@@ -126,6 +129,22 @@ function ReportAnalysis() {
                     }}
                     // eslint-disable-next-line react/jsx-props-no-spreading
                     renderInput={(params) => <TextField {...params} label="Order by" />}
+                />
+
+                <Autocomplete
+                    onChange={(event, value) => {
+                        setFilter({ ...filter, page: 1, name: value });
+                    }}
+                    options={names}
+                    sx={{
+                        width: 300,
+                        marginBottom: 2,
+                        svg: { color: '#fff' },
+                        input: { color: '#fff' },
+                        label: { color: '#fff' },
+                    }}
+                    // eslint-disable-next-line react/jsx-props-no-spreading
+                    renderInput={(params) => <TextField {...params} label="Tracking name" />}
                 />
             </div>
 

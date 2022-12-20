@@ -16,6 +16,7 @@ import InputAdornment from '@mui/material/InputAdornment';
 import SearchIcon from '@mui/icons-material/Search';
 import apiConfig from '~/Api/apiConfig';
 import tmdbApi, { movieType } from '~/Api/tmdbApi';
+import ReportAnalysisApi from '~/Api/reportAnalysis';
 
 import movieCornerSlice from '~/Redux/slices/movieCornerSlice';
 import { movieCornerSelector } from '~/Redux/selector';
@@ -160,6 +161,16 @@ function FilmCorner() {
 function SlideItem(props) {
     const { item } = props;
     const background = apiConfig.originalImage(item.poster_path ? item.poster_path : item.backdrop_path);
+
+    useEffect(() => {
+        const report = {
+            title: item.title,
+            _filmId: item.id,
+            name: 'Display on search page',
+        };
+        ReportAnalysisApi.report(report);
+    }, []);
+
     // const dispatch = useDispatch();
     // const data = useSelector(movieSelector)
     const navigate = useNavigate();
