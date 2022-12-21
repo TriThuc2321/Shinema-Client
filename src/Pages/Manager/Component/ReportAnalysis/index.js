@@ -137,7 +137,7 @@ function ReportAnalysis() {
                     }}
                     options={names}
                     sx={{
-                        width: 300,
+                        width: 600,
                         marginBottom: 2,
                         svg: { color: '#fff' },
                         input: { color: '#fff' },
