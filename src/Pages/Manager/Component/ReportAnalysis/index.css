@@ -10,6 +10,7 @@
     display: flex;
     align-items: flex-start;
     height: fit-content;
+    width: 50%;
 }
 
 .chart {
