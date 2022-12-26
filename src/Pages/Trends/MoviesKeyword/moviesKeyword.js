@@ -1,8 +1,9 @@
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/jsx-no-useless-fragment */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './moviesKeyword.css';
 import { useNavigate } from 'react-router';
+import ReportAnalysisApi from '~/Api/reportAnalysis';
 import apiConfig from '~/Api/apiConfig';
 
 function MoviesKeyword({ keyword, movies }) {
@@ -32,6 +33,15 @@ function SlideItem(props) {
     const { item } = props;
     const background = apiConfig.originalImage(item.poster_path ? item.poster_path : item.backdrop_path);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        const report = {
+            title: item.title,
+            _filmId: item.id,
+            name: 'Display on search page',
+        };
+        ReportAnalysisApi.report(report);
+    }, []);
 
     const GoToDetails = () => {
         navigate(`/filmDetails/${item.id}`);
